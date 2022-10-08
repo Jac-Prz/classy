@@ -1,0 +1,24 @@
+.login-container {
+    background-color: #ffffff;
+    min-height: calc(100vh - 10vw);
+    padding: 7vw;
+    text-align: center;
+}
+
+.login .headline {
+    margin-top: 48px;
+}
+
+.login form {
+    margin-top: 24px;
+}
+
+.login-link {
+    color: #C9CED3;
+    margin: 24px;
+}
+
+.login-link a {
+    color: #949EA8;
+    font-weight: 500;
+}

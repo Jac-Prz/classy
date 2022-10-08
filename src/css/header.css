@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+}
+
+header h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.top-right .login-link {
+    display: none;
+}

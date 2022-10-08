@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+body {
+  background-color: #F5F5F5;
+  margin: 0;
+  font-family: 'Hind', sans-serif;
+}
+
+h1,
+h2,
+h3,
+p {
+  color: #323C46;
+  margin: 0;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.headline {
+  font-size: 22px;
+  line-height: 48px;
+}
+
+.sub-head {
+  color: #949EA8;
+  font-size: 14px;
+}
+
+/* Inputs */
+.input-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+input {
+  font-size: 1rem;
+  padding: .5rem 0;
+  margin-bottom: 1rem;
+  width: 100%;
+  border: none;
+  border-bottom: solid 1px #C9CED3;
+}
+
+input::placeholder {
+  color: #C9CED3;
+}
+
+label {
+  display: block;
+  text-align: left;
+  color: #C9CED3;
+  font-size: 14px;
+  height: 22.4px;
+}
+
+/* Buttons */
+button {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+}
+
+.btn-green {
+  background-color: #22D486;
+  color: #ffffff;
+}
+
+.btn-grey {}
+
+.btn-red {}
+
+.btn-lrg {
+  font-size: 16px;
+  margin-top: 2rem;
+  width: 240px;
+  padding: 16px;
+}
+
+.btn-sml {
+  font-size: 14px;
+  padding: 16px;
+  width: 34px;
+}
