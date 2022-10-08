@@ -1,6 +1,9 @@
 import "../css/header.css"
-import SignUpLink from "./SignIn/SignUpLink";
-import SignInLink from "./SignIn/SignInLink";
+import SignUpLink from "./signin/SignUpLink";
+import SignInLink from "./signin/SignInLink";
+import UserIcon from "./UserIcon";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
 
@@ -11,7 +14,8 @@ const Header = (props) => {
                 {props.topRight &&
                     (props.topRight === "signin") ? <SignUpLink />
                     : (props.topRight === "signup") ? <SignInLink />
-                        : null
+                        : (props.topRight === "userIcon") ? <UserIcon />
+                            : <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
                 }
             </div>
         </header>

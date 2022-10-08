@@ -1,5 +1,5 @@
 import SignInLink from "./SignInLink";
-import Input from "./Input";
+import Input from "../Input";
 import { useState } from "react";
 
 const SignUpForm = () => {

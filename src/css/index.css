@@ -17,13 +17,28 @@ p {
 }
 
 .headline {
-  font-size: 22px;
-  line-height: 48px;
+  font-size: 1.5rem;
+  line-height: 3rem;
 }
-
 .sub-head {
   color: #949EA8;
   font-size: 14px;
+  line-height: 1.5rem;
+}
+
+.main-container {
+  min-height: calc(100vh - 10vw);
+  padding: 7vw;
+}
+
+.container {
+  margin-top: 4rem;
+}
+
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Inputs */
@@ -56,6 +71,7 @@ label {
 /* Buttons */
 button {
   font: inherit;
+  letter-spacing: 1px;
   font-weight: 700;
   border: none;
   border-radius: 4px;
@@ -70,15 +86,21 @@ button {
 
 .btn-red {}
 
+.btn-blk {
+  background-color: #323C46;
+  color: #ffffff;
+}
+
 .btn-lrg {
   font-size: 16px;
   margin-top: 2rem;
-  width: 240px;
-  padding: 16px;
+  width:100%;
+  max-width: 240px;
+  height: 57px;
 }
 
 .btn-sml {
   font-size: 14px;
-  padding: 16px;
-  width: 34px;
+  width: 100px;
+  height: 32px;
 }

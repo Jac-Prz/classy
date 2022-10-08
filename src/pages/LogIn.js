@@ -1,13 +1,13 @@
 import "../css/login.css"
 import Header from "../components/Header";
-import SignInForm from "../components/SignIn/SignInForm";
-import SignUpForm from "../components/SignIn/SignUpForm";
+import SignInForm from "../components/signin/SignInForm";
+import SignUpForm from "../components/signin/SignUpForm";
 
 const LogIn = (props) => {
     return (
-        <div className="login-container">
+        <div className="main-container login-container">
             <Header topRight={props.type} />
-            <section className="login">
+            <section className="container login">
 
                 <h1 className="headline">
                     {(props.type === "signup")

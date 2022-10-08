@@ -1,0 +1,67 @@
+/* cards*/
+.card-container {
+    background-color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 2px #0000001C;
+    width: calc(94vw - 48px);
+    margin: 3vw 3vw 3vw -4vw;
+    /* container margin 7vw, so actual margin = 3vw */
+    padding: 24px;
+}
+
+.card-grid-view {
+    display: grid;
+    grid-template-areas:
+        "date date"
+        "heading heading"
+        "description description"
+        "attendees button";
+    place-content: space-between;
+    min-height: calc(94vw - 48px);
+}
+
+.card-list-view {
+    display: grid;
+    grid-template-areas:
+        "heading heading"
+        "description description"
+        "date button"
+        "attendees button";
+    place-content: space-between;
+}
+
+.card-date {
+    grid-area: date;
+    color: #CACDD0;
+    font-size: 14px;
+}
+
+.card-heading {
+    grid-area: heading;
+}
+
+.card-heading p {
+    font-size: 14px;
+    line-height: 1.5rem;
+    color: #7D7878;
+}
+
+.card-desc {
+    grid-area: description;
+    font-size: 1rem;
+    color: #949EA8;
+    margin-bottom: 8px;
+}
+
+.card-attend {
+    grid-area: attendees;
+    font-size: 14px;
+    color: #949EA8;
+}
+
+.card-btn {
+    grid-area: button;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}

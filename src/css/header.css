@@ -11,6 +11,32 @@ header h3 {
     font-size: 1.5rem;
 }
 
+/* ---------TOP RIGHT THINGS----------*/
+
+/* login links */
 .top-right .login-link {
     display: none;
 }
+
+/* user icon */
+.user-icon-container{
+    display: flex;
+    align-items: center;
+}
+.user-icon {
+height: 2rem;
+min-width: 2rem;
+background-color: #D9DCE1;
+color: #949EA8;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 1rem;
+font-size: 11.2px;
+}
+
+.user-icon-dropdown{
+margin-left: 8px;
+color: #D9DCE1;
+}
+
