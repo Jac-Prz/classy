@@ -1,0 +1,34 @@
+.bin-icon {
+    color: #FF4081;
+    font-size: .7rem;
+}
+
+.edit-class .card{
+    width: calc(100vw - 7rem)
+}
+.attendees-ctr{
+    display:none;
+}
+
+@media(min-width: 650px){
+    .edit-class .card{
+        width: 100%;
+        margin: 0;
+    }   
+}
+@media(min-width:1000px){
+    .edit-class .card{
+        width: calc(100% - 4rem)
+      
+    }   
+    .edit-class{
+        display: grid;
+        grid-template-columns: 70% 30%;
+    }
+    .attendees-ctr{
+        display:block;
+    }
+    .attendees-ctr .card{
+        width:calc(100% - 3rem);
+    }
+}

@@ -3,7 +3,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: inherit;
+    background-color: transparent;
 }
 
 header h3 {
@@ -12,11 +12,6 @@ header h3 {
 }
 
 /* ---------TOP RIGHT THINGS----------*/
-
-/* login links */
-.top-right .login-link {
-    display: none;
-}
 
 /* user icon */
 .user-icon-container{

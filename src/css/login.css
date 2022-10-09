@@ -1,4 +1,4 @@
-.login-container {
+.login-page {
     background-color: #ffffff;
     text-align: center;
 }
@@ -19,4 +19,65 @@
 .login-link a {
     color: #949EA8;
     font-weight: 500;
+}
+
+/* login links */
+.top-right .login-link {
+    display: none;
+}
+
+.quote-ctr{
+    display: none;
+}
+@media(min-width:1000px) {
+    .login-page {
+        background-image: url("../images/classy_bg.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: contain;
+    }
+
+    .login-page>div {
+        height: calc(100vh - 6.6rem);
+        margin: 0 -2.8rem;
+        display: grid;
+        grid-template-columns: 20.9rem auto;
+    }
+
+    .quote-ctr {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin: 1.5rem 2rem;
+    }
+    .quote {
+        color: white;
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: 500;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login>div {
+        width: 30rem;
+        text-align: left;
+    }
+
+    .top-right .login-link {
+        display: inline;
+    }
+
+    form .login-link {
+        display: none;
+    }
 }

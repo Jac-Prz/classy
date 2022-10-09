@@ -1,12 +1,16 @@
-/* cards*/
-.card-container {
+.cards-ctr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 3vw -1.5rem;
+}
+
+.card {
     background-color: #ffffff;
     border-radius: 2px;
     box-shadow: 0 2px 4px 2px #0000001C;
-    width: calc(94vw - 48px);
-    margin: 3vw 3vw 3vw -4vw;
-    /* container margin 7vw, so actual margin = 3vw */
-    padding: 24px;
+    padding: 1.5rem;
+    margin: .5rem;
 }
 
 .card-grid-view {
@@ -16,46 +20,42 @@
         "heading heading"
         "description description"
         "attendees button";
+    row-gap: 1rem;
     place-content: space-between;
-    min-height: calc(94vw - 48px);
+    min-height: 18.5rem;
+    width: 95vw;
 }
-
-.card-list-view {
-    display: grid;
-    grid-template-areas:
-        "heading heading"
-        "description description"
-        "date button"
-        "attendees button";
-    place-content: space-between;
-}
-
+ 
 .card-date {
     grid-area: date;
     color: #CACDD0;
     font-size: 14px;
+    line-height: 24px;
 }
 
 .card-heading {
     grid-area: heading;
 }
 
-.card-heading p {
+.author {
+    grid-area: author;
     font-size: 14px;
+    line-height: 24px;
     line-height: 1.5rem;
     color: #7D7878;
 }
 
 .card-desc {
     grid-area: description;
+    line-height: 24px;
     font-size: 1rem;
     color: #949EA8;
-    margin-bottom: 8px;
 }
 
 .card-attend {
     grid-area: attendees;
     font-size: 14px;
+    line-height: 24px;
     color: #949EA8;
 }
 
@@ -64,4 +64,57 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+/* card list view styles */
+.card-list-view {
+    display: grid;
+    grid-template-areas:
+        "heading heading"
+        "description description"
+        "date button"
+        "attendees button";
+    place-content: space-between;
+    width: calc(94vw - 48px);
+}
+.card-list-view .author{
+    display: none;
+}
+.card-list-view h2.headline{
+    font-size: 1.1rem;
+}
+
+@media(min-width:450px) {
+    .card {
+        margin: 1rem;
+    }
+
+    .card-grid-view {
+        min-height: 296px;
+        max-width: 24rem;
+    }
+
+    .card-list-view {
+        width: calc(100% - 5rem);
+    }
+}
+
+@media(min-width:650px) {
+    .cards-ctr {
+        margin: .8rem 0;
+        justify-content: left;
+    }
+}
+
+/* card list view -> horizontal single line */
+@media(min-width:1000px) {
+    .card-list-view {
+        grid-template-columns:20% 25% 10% 10% 5% 10%;
+        grid-template-areas:
+            "heading description author date attendees button";
+        align-items: center;
+    }
+    .card-list-view .author{
+        display: inline-block;
+    }
 }

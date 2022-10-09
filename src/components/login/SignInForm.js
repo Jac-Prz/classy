@@ -1,4 +1,4 @@
-import SignUpLink from "./SignUpLink";
+import Link from "./Link";
 import Input from "../Input";
 import { useState } from "react";
 
@@ -29,7 +29,7 @@ const SignInForm = () => {
                     onChange={handleFormData}
                     value={formData.password} />
             </div>
-            <SignUpLink />
+            <Link type="signUp" />
             <button className="btn-lrg btn-green">SIGN IN</button>
         </form>
     );

@@ -1,6 +1,52 @@
 .display-settings {
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
+    color: #A9AEB4;
+}
+
+.grid-display .display-settings {
+    max-width: 27rem;
+}
+
+.class-detail-ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* show options */
+.showing-options {
+    display: flex;
+    align-items: flex-start;
+}
+
+.showing-options.expanded {
+    height: 100%;
+
+}
+
+.showing-options.hidden {
+    height: 24px;
+    overflow: hidden;
+}
+
+.showing-options p {
+    margin: 0 .5rem;
+}
+
+.showing-options ul {
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.showing-options li {
+    list-style: none;
 }
 
 .gry-bld {
@@ -10,26 +56,58 @@
     font-weight: 700;
 }
 
-.class-detail-ctr{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.bin-icon{
-    color: #FF4081;
-    font-size: .7rem;
-}
-/* filter and views */
-.display-settings {
-    color: #A9AEB4;
-}
-
-.display-settings p span {
+.drk {
     color: #323C46;
 }
 
+@media(min-width:650px) {
+    .container.grid-display {
+        width: 29rem;
+    }
+    .list-display .display-settings{
+        margin: 0 1rem;
+    }
+}
+
+@media(min-width:1034px) {
+
+    .grid-display .display-settings {
+        max-width: 56rem;
+    }
+
+    .container.grid-display {
+        width: 58rem;
+    }
+
+    .showing-options p {
+        display: none;
+    }
+
+    .showing-options ul {
+        flex-direction: row;
+    }
+
+    .showing-options li {
+        padding-right: 1rem;
+    }
+}
+
+@media(min-width:1500px) {
+    .grid-display .display-settings {
+        max-width: 85rem;
+    }
+
+    .container.grid-display {
+        width: 87rem;
+    }
+}
+
+
+/* layout options */
+
 .layout-icon {
     display: flex;
+    margin: 0 .5rem;
 }
 
 .layout-icon div {
@@ -63,7 +141,7 @@
 .add-btn-ctr {
     display: flex;
     justify-content: end;
-    margin-top:1.5rem;
+    margin-top: 1.5rem;
 }
 
 .add-button {
@@ -81,13 +159,14 @@
     width: 3.5rem;
     font-size: 1rem;
     border-radius: 50%;
-        color: #ffffff;
+    color: #ffffff;
     box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.15);
 }
 
 .add {
     background-color: #323C46;
 }
-.tick{
+
+.tick {
     background-color: #22D486;
 }

@@ -1,4 +1,4 @@
-import SignInLink from "./SignInLink";
+import Link from "./Link";
 import Input from "../Input";
 import { useState } from "react";
 
@@ -50,7 +50,7 @@ const SignUpForm = () => {
                     onChange={handleFormData}
                     value={formData.repeatPassword} />
             </div>
-            <SignInLink />
+            <Link linkTo="signIn"/>
             <button className="btn-lrg btn-green">SIGN IN</button>
         </form>
     );

@@ -1,8 +1,10 @@
 import Header from "../components/Header";
-import ClassCard from "../components/dashboard/ClassCard";
+import ClassCardGrid from "../components/dashboard/ClassCardGrid";
 import ClassDetail from "../components/dashboard/ClassDetail";
 import Attendees from "../components/dashboard/Attendees";
 import AddButton from "../components/dashboard/AddButton";
+import allClasses from "../data/data.json"
+
 
 const Detail = () => {
 
@@ -11,7 +13,7 @@ const Detail = () => {
             <Header topRight="loggedIn"/>
             <div className="container">
                 <ClassDetail />
-                <ClassCard />
+                <ClassCardGrid data={allClasses[0]}/>
                 <Attendees />
                 <AddButton />
             </div>

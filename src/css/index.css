@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Nunito+Sans:wght@400;600&display=swap');
 
 body {
   background-color: #F5F5F5;
@@ -13,7 +13,7 @@ p {
   color: #323C46;
   margin: 0;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem;
 }
 
 .headline {
@@ -27,12 +27,19 @@ p {
 }
 
 .main-container {
-  min-height: calc(100vh - 10vw);
-  padding: 7vw;
+  min-height: calc(100vh - 3.6rem);
+  padding: 1.8rem 1.5rem;
+}
+
+@media(min-width:450px){
+  .main-container {
+    min-height: calc(100vh - 5rem);
+    padding: 2.5rem 2.8rem;
+  }
 }
 
 .container {
-  margin-top: 4rem;
+  margin: 4rem auto;
 }
 
 .centered{
@@ -44,9 +51,15 @@ p {
 /* Inputs */
 .input-container {
   width: 90%;
+  max-width: 30rem;
   margin: 0 auto;
 }
-
+@media(min-width:1000px){
+  .input-container {
+    width: 900%;
+    margin: 0 
+  }
+}
 input {
   font-size: 1rem;
   padding: .5rem 0;
