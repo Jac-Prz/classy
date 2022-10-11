@@ -8,7 +8,7 @@ const UserIcon = () => {
 
     return (
         <div>
-        <div className='user-icon-container'>
+        <div className='user-icon-ctr'>
             { user  ? <div className="user-icon sml-gry">JP</div> : null }
             {user ? <p className='sml-gry'>{user.first_name} {user.last_name && user.last_name}</p> : null }
             <div className="sml-gry caret-down" onClick={()=> setView(!view)}>

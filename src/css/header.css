@@ -4,7 +4,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
-    min-height: 1.6rem;
+    min-height: 4rem;
 }
 
 /* classie.io */
@@ -14,7 +14,7 @@ header h3 {
 }
 
 /* user icon */
-.user-icon-container {
+.user-icon-ctr {
     display: flex;
     align-items: center;
 }
@@ -36,9 +36,8 @@ header h3 {
 
 }
 
-.user-icon p {
-    display: hidden;
-    height: 2rem
+.user-icon-ctr p {
+    display: none;
 }
 
 .user-icon-dropdown {
@@ -46,19 +45,19 @@ header h3 {
     color: #D9DCE1;
 }
 
-.user-icon-container .caret-down {
-    margin-left: .5rem;
-    cursor: pointer;
+.user-icon-ctr .caret-down {
+       cursor: pointer;
 }
 
 .logout {
-    margin-top: -1rem;
+    margin-top: -.5rem;
     text-align: right;
     cursor: pointer;
 }
 
 @media(min-width: 1034px) {
-    .user-icon p {
+    .user-icon-ctr p {
         display: inline-block;
+        margin-right: .5rem;
     }
 }
