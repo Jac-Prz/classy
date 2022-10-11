@@ -1,7 +1,8 @@
-import Header from "../components/Header";
-import NewClassForm from "../components/NewClassForm";
+import Header from "../components/header/Header";
+import NewClassForm from "../components/newclass/NewClassForm";
 
 const NewClass = () => {
+
     return (
         <div className="main-container login-container">
             <Header topRight="exit" />

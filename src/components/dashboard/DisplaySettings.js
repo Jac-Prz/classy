@@ -1,9 +1,10 @@
+import "../../css/display-settings.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faGrip, faGripLines } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 const DisplaySettings = (props) => {
-    const [selectedOption, setSelectedOption] = useState()
+    const [selectedOption, setSelectedOption] = useState("ALL CLASSES")
     const [dropdown, setDropdown] = useState("hidden");
 
     const selectedStyle = {

@@ -1,21 +1,22 @@
-const Attendees = () => {
+const Attendees = (props) => {
     return (
         <div className="card-container">
             <h2 className="headline">Attendees</h2>
-            <div className="anttendees">
-            <div className="antendee-container"></div>
-                <div className="attendee you">You</div>
-                <div className="attendee">Barry</div>
-                <div className="attendee">Elroj Jones</div>
-                <div className="attendee">Big Long Name Jojo</div>
-                <div className="attendee">hellow world</div>
-                <div className="attendee">Barry</div>
-                <div className="attendee">Elroj Jones</div>
-                <div className="attendee">Big Long Name Jojo</div>
+            <div className="attendees">
+                <div className="antendee-container">
+                    {props.attendees && props.attendees.map((name, index) => {
+                        return <div className="attendee" key={index}>{name}</div>
+                    })}
+                </div>
             </div>
-
         </div>
     );
 }
 
 export default Attendees;
+
+//once login complete, and global with user details exists, add an if statement to get "you"
+
+// if(name === yourName) {
+//     return <div className="attendee you">You</div>
+// }

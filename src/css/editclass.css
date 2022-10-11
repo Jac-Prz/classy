@@ -16,7 +16,7 @@
         margin: 0;
     }   
 }
-@media(min-width:1000px){
+@media(min-width:1034px){
     .edit-class .card{
         width: calc(100% - 4rem)
       

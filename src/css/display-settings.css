@@ -1,0 +1,86 @@
+.display-settings {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem auto;
+    color: #A9AEB4;
+}
+
+@media(min-width:650px) {
+    .display-settings {
+        margin: 2rem 1.5rem;
+    }
+}
+
+.gry-bld {
+    color: #A9AEB4;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.drk {
+    color: #323C46;
+}
+
+/* LEFT SIDE - showing options */
+.showing-options {
+    display: flex;
+    align-items: flex-start;
+}
+
+.showing-options.expanded {
+    height: 100%;
+}
+
+.showing-options.hidden {
+    height: 24px;
+    overflow: hidden;
+}
+
+.showing-options p {
+    margin: 0 .5rem;
+}
+
+.showing-options ul {
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.showing-options li {
+    list-style: none;
+}
+
+@media(min-width:1034px) {
+
+    .showing-options p {
+        display: none;
+    }
+
+    .showing-options ul {
+        flex-direction: row;
+    }
+
+    .showing-options li {
+        padding-right: 1rem;
+    }
+}
+
+/* RIGHT SIDE - layout */
+
+.layout-icon {
+    display: flex;
+    margin: 0 .5rem;
+}
+
+.layout-icon div {
+    margin-left: 8px;
+}
+
+.layout-icon .selected-layout {
+    color: #323C46;
+}

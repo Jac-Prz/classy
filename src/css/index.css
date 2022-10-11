@@ -31,13 +31,6 @@ p {
   padding: 1.8rem 1.5rem;
 }
 
-@media(min-width:450px){
-  .main-container {
-    min-height: calc(100vh - 5rem);
-    padding: 2.5rem 2.8rem;
-  }
-}
-
 .container {
   margin: 4rem auto;
 }

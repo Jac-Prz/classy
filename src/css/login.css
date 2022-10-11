@@ -3,12 +3,20 @@
     text-align: center;
 }
 
-.login .headline {
-    margin-top: 48px;
+.login-page>div {
+    /* header:h1.5, main-container: h1.8 w1.5 */
+    min-height: calc(100vh - 1.6rem - 3.6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login{
+    margin: 2rem 0;
 }
 
 .login form {
-    margin-top: 24px;
+    margin-top: 1.5rem;
 }
 
 .login-link {
@@ -19,16 +27,18 @@
 .login-link a {
     color: #949EA8;
     font-weight: 500;
+    text-decoration: none;
 }
 
-/* login links */
+/* alternate login links */
 .top-right .login-link {
     display: none;
 }
 
-.quote-ctr{
+.quote-ctr {
     display: none;
 }
+
 @media(min-width:1000px) {
     .login-page {
         background-image: url("../images/classy_bg.png");
@@ -38,10 +48,12 @@
     }
 
     .login-page>div {
-        height: calc(100vh - 6.6rem);
-        margin: 0 -2.8rem;
+        /* header:h1.5, main-container: h1.8 w1.5 */
+        height: calc(100vh - 1.6rem - 3.6rem);
+        justify-content: unset;
         display: grid;
         grid-template-columns: 20.9rem auto;
+        margin: 0 -1.5rem;
     }
 
     .quote-ctr {
@@ -53,6 +65,7 @@
         font-size: 1.1rem;
         margin: 1.5rem 2rem;
     }
+
     .quote {
         color: white;
         font-family: 'Nunito Sans', sans-serif;

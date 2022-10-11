@@ -1,8 +1,7 @@
-const ClassDetail = () => {
+const ClassDetail = (props) => {
     return ( 
         <p className="gry-bld">
-            DETAIL CLASS: <br />
-            #5878c5145f94d3001c1469c5
+            DETAIL CLASS: #{props.classId}
         </p>
      );
 }

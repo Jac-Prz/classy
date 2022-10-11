@@ -1,9 +1,3 @@
-.cards-ctr {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 3vw -1.5rem;
-}
 
 .card {
     background-color: #ffffff;
@@ -13,6 +7,7 @@
     margin: .5rem;
 }
 
+/* card grid view styles */
 .card-grid-view {
     display: grid;
     grid-template-areas:
@@ -23,8 +18,7 @@
     row-gap: 1rem;
     place-content: space-between;
     min-height: 18.5rem;
-    width: 95vw;
-}
+    }
  
 .card-date {
     grid-area: date;
@@ -75,7 +69,8 @@
         "date button"
         "attendees button";
     place-content: space-between;
-    width: calc(94vw - 48px);
+    width: calc(94vw - 3rem - 5rem);
+    /* main container w3,  card 5*/
 }
 .card-list-view .author{
     display: none;
@@ -91,18 +86,7 @@
 
     .card-grid-view {
         min-height: 296px;
-        max-width: 24rem;
-    }
-
-    .card-list-view {
-        width: calc(100% - 5rem);
-    }
-}
-
-@media(min-width:650px) {
-    .cards-ctr {
-        margin: .8rem 0;
-        justify-content: left;
+        width: 24rem;
     }
 }
 
