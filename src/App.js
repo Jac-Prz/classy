@@ -16,9 +16,9 @@ function App() {
       <Route path="/signup" element={<LogIn type="signup" />} />
       <Route path="/pagedown" element={<LogIn type="404" />} />
       <Route path="/error" element={<LogIn />} />
-      <Route path="/detail/:classId" element={<Detail />} />
+      <Route path="/detail/:classId" element={<Detail edit={false} />} />
       <Route path="/newclass" element={<NewClass />} />
-      {/* <Route path="/editclass/:classId" element={<EditClass />} /> */}
+      <Route path="/editclass/:classId" element={<Detail edit={true}/>}  />
     </Routes>
   );
 }

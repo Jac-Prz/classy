@@ -1,3 +1,4 @@
+import CardButton from "./CardButton"
 const ClassCardList = (props) => {
 
     // list view - max 30 characters in desc
@@ -17,7 +18,7 @@ const ClassCardList = (props) => {
             <p className="card-desc">{limitCharacters(props.data.description)}</p>
             <p className="card-attend">{props.data.attendees.length} of {props.data.no_of_places}</p>
             <div className="card-btn">
-                <button className="btn-sml btn-green">JOIN</button>
+            <CardButton data={props.data} />
             </div>
         </div>
     );

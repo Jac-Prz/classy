@@ -41,6 +41,13 @@ p {
   align-items: center;
 }
 
+/* back to classes link */
+.back{
+  color: #323C46;
+  text-decoration: none;
+font-size: 1rem;
+}
+
 /* Inputs */
 .input-container {
   width: 90%;
@@ -49,7 +56,7 @@ p {
 }
 @media(min-width:1000px){
   .input-container {
-    width: 900%;
+    width: 100%;
     margin: 0 
   }
 }
@@ -83,14 +90,20 @@ button {
   border-radius: 4px;
 }
 
-.btn-green {
+.btn-green, .join {
   background-color: #22D486;
   color: #ffffff;
 }
 
-.btn-grey {}
+.btn-grey, .edit {
+  background-color: #D9DCE1;
+  color: #A9AEB4;
+}
 
-.btn-red {}
+.btn-red, .leave {
+  background-color: #FF0000;
+  color: #ffffff;
+}
 
 .btn-blk {
   background-color: #323C46;

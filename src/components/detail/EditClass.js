@@ -1,54 +1,91 @@
 import Input from "../Input";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const EditClass = (props) => {
 
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        classname: props.data.classname,
-        description: props.data.description,
-        date: props.data.date,
-        location: props.data.location,
-        no_of_places: props.data.no_of_places
+        classname: "",
+        description: "",
+        date: "",
+        location: "",
+        no_of_places: 0,
     });
+
+    useEffect(() => {
+        setFormData(props.data)
+    }, [props])
 
     const handleFormData = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const json = editClass();
+        console.log(json)
+        if (json) {
+navigate(`/detail/${props.data._id}`)
+        }
+    }
+
+    const editClass = async () => {
+        const response = await fetch(
+            `https://testproject.optimistinc.com/api/class/${props.data._id}`,
+            {
+                method: "PUT",
+                headers: {
+                    'Content-Type': "application/json",
+                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
+                },
+                body: JSON.stringify(formData)
+            });
+            if(!response.ok){
+                console.log(response)
+            }
+        return await response.json()
+    }
+
     return (
         <div className="card">
-            <Input
-                name="title"
-                type="text"
-                placeholder="Title"
-                onChange={handleFormData}
-                value={formData.classname} />
-            <Input
-                name="description"
-                type="text"
-                placeholder="Description"
-                onChange={handleFormData}
-                value={formData.description} />
-            <Input
-                name="date"
-                type="text"
-                placeholder="Date"
-                onChange={handleFormData}
-                value={formData.date} />
-            <Input
-                name="location"
-                type="address"
-                placeholder="Location"
-                onChange={handleFormData}
-                value={formData.location} />
-            <Input
-                name="capacity"
-                type="number"
-                placeholder="Capacity"
-                onChange={handleFormData}
-                value={formData.no_of_places} />
+            <div>
+                <Input
+                    name="classname"
+                    type="text"
+                    placeholder="Title"
+                    onChange={handleFormData}
+                    value={formData.classname} />
+                <Input
+                    name="description"
+                    type="text"
+                    placeholder="Description"
+                    onChange={handleFormData}
+                    value={formData.description} />
+                <Input
+                    name="date"
+                    type="text"
+                    placeholder="Date"
+                    onChange={handleFormData}
+                    value={formData.date} />
+                <Input
+                    name="location"
+                    type="address"
+                    placeholder="Location"
+                    onChange={handleFormData}
+                    value={formData.location} />
+                <Input
+                    name="no_of_places"
+                    type="number"
+                    placeholder="Capacity"
+                    onChange={handleFormData}
+                    value={formData.no_of_places} />
+            </div>
+            <button className="btn-lrg btn-green" onClick={handleSubmit}>Submit</button>
         </div>
     );
+
 }
 
 export default EditClass;

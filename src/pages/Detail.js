@@ -1,22 +1,25 @@
 import Header from "../components/header/Header";
 import ClassCardGrid from "../components/dashboard/ClassCardGrid";
 import ClassDetail from "../components/dashboard/ClassDetail";
-import Attendees from "../components/dashboard/Attendees";
+import Attendees from "../components/detail/Attendees";
 import AddButton from "../components/dashboard/AddButton";
 import EditClass from "../components/detail/EditClass";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
+const Detail = (props) => {
 
-
-const Detail = () => {
+    const { user } = useContext(UserContext)
 
     let { classId } = useParams();
+
     const [classData, setClassData] = useState({
         _id: "",
         classname: "",
         date: "",
-        attendees: [       ],
+        attendees: [],
         no_of_places: 0,
         description: "",
         location: "",
@@ -35,6 +38,7 @@ const Detail = () => {
                 },
             });
         const json = await response.json()
+        console.log(json)
         setClassData(json);
     }
     useState(() => {
@@ -43,11 +47,11 @@ const Detail = () => {
 
     return (
         <div className="main-container">
-            <Header topRight="loggedIn" />
+            {!user ? <Navigate to="/" /> : null}
+            <Header topRight="userIcon" back={true} />
             <div className="container">
                 <ClassDetail classId={classId} />
-                <ClassCardGrid data={classData} />
-                <EditClass data={classData} />
+                {!props.edit ? <ClassCardGrid data={classData} /> : <EditClass data={classData} />}
                 <Attendees attendees={classData.attendees} />
                 <AddButton />
             </div>

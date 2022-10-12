@@ -1,8 +1,11 @@
 import Input from "../Input";
-import axios from 'axios';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/UserContext";
 
-const NewClassForm = () => {
+
+const NewClassForm = (props) => {
+
+    const { user } = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         title: "",
@@ -17,26 +20,39 @@ const NewClassForm = () => {
     }
 
     const data = {
-        title: "The perfect fondue",
-        description: "Get cheesy at lunch time",
-        date: "8 december, 2022",
-        location: "Prague",
-        capacity: "10",
-        created_by: "123456",
-        created_by_name: "Jean Louis"
+        classname: formData.title,
+        description: formData.description,
+        date: formData.date,
+        location: formData.location,
+        capacity: formData.capacity,
+        created_by: user._id,
+        created_by_name: user.full_name
     }
 
-   axios({
-        method: 'post',
-        url: 'https://testproject.optimistinc.com/api/class',
-        data: data, 
-        headers: {'optimist_api_key': '633eca001f1829e01a6bb991'}
-
-    }).then((response) => {
+    const addClass = async (e) => {
+        e.preventDefault();
+        const response = await fetch(
+            "https://testproject.optimistinc.com/api/class/",
+            {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
+                },
+                body: JSON.stringify(data)
+            }
+        )
         console.log(response)
-    }).catch((error) => {
-        console.log(error)
-    });
+        if (!response.ok) {
+            console.log(response)
+        }
+        const json = await response.json()
+        console.log(json)
+        if (json) {
+            props.success()
+        }
+        //if success redirect or set a success response and back button
+    }
 
     return (
         <form>
@@ -55,7 +71,7 @@ const NewClassForm = () => {
                     value={formData.description} />
                 <Input
                     name="date"
-                    type="text"
+                    type="date"
                     placeholder="Date"
                     onChange={handleFormData}
                     value={formData.date} />
@@ -72,8 +88,7 @@ const NewClassForm = () => {
                     onChange={handleFormData}
                     value={formData.capacity} />
             </div>
-            <button className="btn-lrg btn-green">CREATE NEW CLASS</button>
-
+            <button className="btn-lrg btn-green" onClick={addClass}>CREATE NEW CLASS</button>
         </form>
     );
 

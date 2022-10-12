@@ -1,0 +1,21 @@
+.new-class-ctr{
+    height: calc(100vh - 3.6rem - 4rem);
+    display: flex;
+    justify-content: center;
+}
+.new-class-ctr > div{
+    width: 90vw;
+    max-width: 750px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.new-class-ctr form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

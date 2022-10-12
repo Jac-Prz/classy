@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import CardButton from './CardButton';
 
 
 const ClassCardGrid = (props) => {
@@ -14,7 +15,7 @@ const ClassCardGrid = (props) => {
             <p className="card-desc">{props.data.description}</p>
             <p className="card-attend"><FontAwesomeIcon icon={faUser} /> {props.data.attendees.length} of {props.data.no_of_places}</p>
             <div className="card-btn">
-                <button className="btn-sml btn-green">JOIN</button>
+                <CardButton data={props.data} />
             </div>
         </div>
     );

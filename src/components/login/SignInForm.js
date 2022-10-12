@@ -52,9 +52,11 @@ const SignInForm = (props) => {
         if (response.ok){
             const json = await response.json()
             console.log(json);
+            const fullName = json.last_name ? json.first_name + " " + json.last_name : json.first_name;
             setUser({
                 first_name: json.first_name,
                 last_name: json.last_name,
+                full_name: fullName,
                 email: json.email,
                 _id: json._id
             })
