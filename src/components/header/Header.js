@@ -11,7 +11,7 @@ const Header = (props) => {
         <header>
             <h3>Classy.io</h3>
             {props.back ? <div>
-                <Link to="/home" className="back"><FontAwesomeIcon icon={faArrowLeft} style={{fontSize: ".8rem"}}/>  Back to classes</Link>
+                <Link to="/home" className="back"><FontAwesomeIcon icon={faArrowLeft} style={{fontSize: ".6rem"}}/>  Back to classes</Link>
             </div> : null}
             <div className="top-right">
                 {props.topRight &&

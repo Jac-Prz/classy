@@ -11,55 +11,29 @@
     margin: .8rem -1.5rem;
 }
 
-@media(min-width:650px) {
+@media(min-width:600px) {
     .cards-ctr {
         justify-content: left;
         margin: .8rem;
     }
-
     .container.grid-display {
-        width: 30.6rem;
-    }
-
-    .list-display .display-settings {
-        margin: 0 1rem;
+        width: 29.6rem;
     }
 }
 
 @media(min-width:1034px) {
     .container.grid-display {
-        width: 59.6rem;
+        width: 57.9rem;
     }
 }
 
 @media(min-width:1500px) {
-    /* .grid-display .display-settings {
-        max-width: 85rem;
-    } */
 
     .container.grid-display {
-        width: 88.7rem;
+        width: 85.8rem;
     }
 }
 
-/* attendees section */
-.attendee {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    padding: 0 1rem;
-    margin: 0 .5rem .5rem 0;
-    background-color: #D9DCE1;
-    border: solid 2px #D9DCE1;
-    color: #949EA8;
-    border-radius: 1rem;
-    font-size: .9rem;
-}
-
-.you {
-    background-color: #ffffff;
-}
 
 /* add button */
 .add-btn-ctr {

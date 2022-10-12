@@ -2,7 +2,7 @@ const Input = (props) => {
     return (
         <div>
             <label htmlFor={props.name}>
-                {/* {(props.value.length > 0) ? props.placeholder : ""} */}
+                {(props.value.length > 0) ? props.placeholder : ""}
             </label>
             <input
                 type={props.type}

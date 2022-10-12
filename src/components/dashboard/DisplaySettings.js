@@ -29,18 +29,21 @@ const DisplaySettings = (props) => {
                 <p className="gry-bld ">SHOW: </p>
                 <ul>
                     <li
+                        className="all"
                         style= {(selectedOption === "ALL CLASSES")  ? selectedStyle : defaultStyle}
                         onClick={handleListClick}
                         >
                         ALL CLASSES
                     </li>
                     <li
+                    className="future"
                         style= {(selectedOption === "FUTURE CLASSES")  ? selectedStyle : defaultStyle}
                         onClick={handleListClick}
                         >
                         FUTURE CLASSES
                     </li>
                     <li
+                    className="past"
                         style= {(selectedOption === "PAST CLASSES")  ? selectedStyle : defaultStyle}
                         onClick={handleListClick}
                         >

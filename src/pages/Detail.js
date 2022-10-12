@@ -1,9 +1,7 @@
+import "../css/detail.css"
 import Header from "../components/header/Header";
-import ClassCardGrid from "../components/dashboard/ClassCardGrid";
-import ClassDetail from "../components/dashboard/ClassDetail";
-import Attendees from "../components/detail/Attendees";
-import AddButton from "../components/dashboard/AddButton";
 import EditClass from "../components/detail/EditClass";
+import DisplayView from "../components/detail/DisplayView";
 import { useParams } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
@@ -29,6 +27,7 @@ const Detail = (props) => {
         __v: 0
     });
 
+
     const fetchClass = async () => {
         const response = await fetch(
             `https://testproject.optimistinc.com/api/class/${classId}`,
@@ -41,22 +40,25 @@ const Detail = (props) => {
         console.log(json)
         setClassData(json);
     }
+
     useState(() => {
         fetchClass()
     })
 
+    
     return (
         <div className="main-container">
-            {!user ? <Navigate to="/" /> : null}
-            <Header topRight="userIcon" back={true} />
-            <div className="container">
-                <ClassDetail classId={classId} />
-                {!props.edit ? <ClassCardGrid data={classData} /> : <EditClass data={classData} />}
-                <Attendees attendees={classData.attendees} />
-                <AddButton />
-            </div>
+            {!user ? <Navigate to="/" />
+                :
+                <div>
+                    <Header topRight="userIcon" back={true} />
+                    {!props.edit
+                        ? <DisplayView data={classData} reset={() => fetchClass()}/>
+                        : <EditClass data={classData} reset={() => fetchClass()}/>
+                    }
+                </div>
+            }
         </div>
-
     );
 }
 

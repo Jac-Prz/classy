@@ -1,13 +1,24 @@
 .display-settings {
     display: flex;
     justify-content: space-between;
-    margin: 2rem auto;
+    margin: 2.5rem auto 1rem;
     color: #A9AEB4;
+    padding: 0 .5rem;
 }
 
-@media(min-width:650px) {
-    .display-settings {
-        margin: 2rem 1.5rem;
+@media(min-width:600px) {
+    .list-display .display-settings {
+        padding: 0 .5rem;
+    }
+
+    .grid-display .display-settings {
+        padding: 0 .9rem;
+    }
+}
+
+@media(min-width:1034px) {
+    .grid-display .display-settings {
+        padding: 0 1.2rem;
     }
 }
 
@@ -38,7 +49,7 @@
 }
 
 .showing-options p {
-    margin: 0 .5rem;
+    margin-left: .5rem;
 }
 
 .showing-options ul {
@@ -53,6 +64,7 @@
 
 .showing-options li {
     list-style: none;
+    margin: 0 .5rem;
 }
 
 @media(min-width:1034px) {
@@ -62,11 +74,20 @@
     }
 
     .showing-options ul {
-        flex-direction: row;
+        display: grid;
+        grid-template-areas: "allclass future past";
+
+    }
+    .all {
+        grid-area: allclass;
     }
 
-    .showing-options li {
-        padding-right: 1rem;
+    .future {
+        grid-area: future;
+    }
+
+    .past {
+        grid-area: past;
     }
 }
 

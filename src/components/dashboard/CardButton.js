@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const CardButton = (props) => {
 
     const { user } = useContext(UserContext);
     const [btnType, setBtnType] = useState("join")
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
 
@@ -24,9 +25,15 @@ const CardButton = (props) => {
         if (btnType === "join") {
             handleAttendance("POST")
             setBtnType("leave")
+            if(location.pathname.includes("detail")){
+                props.reset()
+            }
         } else if (btnType === "leave") {
             handleAttendance("DELETE")
             setBtnType("join")
+            if(location.pathname.includes("detail")){
+                props.reset()
+            }
         } else if (btnType === "edit") {
             navigate(`/editclass/${props.data._id}`);
         }
@@ -38,7 +45,7 @@ const CardButton = (props) => {
             username: user.full_name
         }
         const response = await fetch(
-           ' https://testproject.optimistinc.com/api/subscribe/',
+            ' https://testproject.optimistinc.com/api/subscribe/',
             {
                 method: type,
                 headers: {
@@ -53,6 +60,7 @@ const CardButton = (props) => {
         } else {
             const json = await response.json();
             console.log(json);
+
         }
     }
 

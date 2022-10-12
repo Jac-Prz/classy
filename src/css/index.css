@@ -28,7 +28,7 @@ p {
 
 .main-container {
   min-height: calc(100vh - 3.6rem);
-  padding: 1.8rem 1.5rem;
+  padding: .5rem 1.8rem 1.5rem;
 }
 
 .container {
@@ -39,13 +39,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* back to classes link */
-.back{
-  color: #323C46;
-  text-decoration: none;
-font-size: 1rem;
 }
 
 /* Inputs */

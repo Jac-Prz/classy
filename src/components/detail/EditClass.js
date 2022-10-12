@@ -1,4 +1,7 @@
 import Input from "../Input";
+import TickButton from "./TickButton";
+import Attendees from "./Attendees"
+import ClassDetail from "./ClassDetail";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +30,8 @@ const EditClass = (props) => {
         const json = editClass();
         console.log(json)
         if (json) {
-navigate(`/detail/${props.data._id}`)
+            props.reset();
+            navigate(`/detail/${props.data._id}`);
         }
     }
 
@@ -42,47 +46,54 @@ navigate(`/detail/${props.data._id}`)
                 },
                 body: JSON.stringify(formData)
             });
-            if(!response.ok){
-                console.log(response)
-            }
+        if (!response.ok) {
+            console.log(response)
+        }
         return await response.json()
     }
 
+
     return (
-        <div className="card">
-            <div>
-                <Input
-                    name="classname"
-                    type="text"
-                    placeholder="Title"
-                    onChange={handleFormData}
-                    value={formData.classname} />
-                <Input
-                    name="description"
-                    type="text"
-                    placeholder="Description"
-                    onChange={handleFormData}
-                    value={formData.description} />
-                <Input
-                    name="date"
-                    type="text"
-                    placeholder="Date"
-                    onChange={handleFormData}
-                    value={formData.date} />
-                <Input
-                    name="location"
-                    type="address"
-                    placeholder="Location"
-                    onChange={handleFormData}
-                    value={formData.location} />
-                <Input
-                    name="no_of_places"
-                    type="number"
-                    placeholder="Capacity"
-                    onChange={handleFormData}
-                    value={formData.no_of_places} />
+        <div className="detail-ctr">
+            <ClassDetail classId={props.data._id} bin={true} />
+            <div className="detail">
+                <div className="card attendees-ctr">
+                    <div>
+                        <Input
+                            name="classname"
+                            type="text"
+                            placeholder="Title"
+                            onChange={handleFormData}
+                            value={formData.classname} />
+                        <Input
+                            name="description"
+                            type="text"
+                            placeholder="Description"
+                            onChange={handleFormData}
+                            value={formData.description} />
+                        <Input
+                            name="date"
+                            type="text"
+                            placeholder="Date"
+                            onChange={handleFormData}
+                            value={formData.date} />
+                        <Input
+                            name="location"
+                            type="address"
+                            placeholder="Location"
+                            onChange={handleFormData}
+                            value={formData.location} />
+                        <Input
+                            name="no_of_places"
+                            type="number"
+                            placeholder="Capacity"
+                            onChange={handleFormData}
+                            value={formData.no_of_places} />
+                    </div>
+                </div>
+                <Attendees attendees={props.data.attendees} />
             </div>
-            <button className="btn-lrg btn-green" onClick={handleSubmit}>Submit</button>
+            <TickButton onClick={handleSubmit} />
         </div>
     );
 

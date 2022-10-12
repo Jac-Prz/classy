@@ -5,7 +5,7 @@
 
 .login-page>div {
     /* header:h1.5, main-container: h1.8 w1.5 */
-    min-height: calc(100vh - 1.6rem - 3.6rem);
+    min-height: calc(100vh - 2rem - 4rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +49,7 @@
 
     .login-page>div {
         /* header:h1.5, main-container: h1.8 w1.5 */
-        height: calc(100vh - 1.6rem - 3.6rem);
+        height: calc(100vh - 2rem - 4rem);
         justify-content: unset;
         display: grid;
         grid-template-columns: 20.9rem auto;

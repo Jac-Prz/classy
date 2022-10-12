@@ -1,11 +1,13 @@
+.cards-ctr a {
+    margin: 0;
+}
 
 .card {
     background-color: #ffffff;
     border-radius: 2px;
     box-shadow: 0 2px 4px 2px #0000001C;
-    padding: 1.5rem;
     margin: .5rem;
-}
+    }
 
 /* card grid view styles */
 .card-grid-view {
@@ -17,9 +19,24 @@
         "attendees button";
     row-gap: 1rem;
     place-content: space-between;
-    min-height: 18.5rem;
-    }
- 
+    min-height: 15rem;
+    max-width: 23rem;
+    padding: 2rem;
+    width: calc(100vw - 6.2rem);
+}
+
+.card-list-view {
+    display: grid;
+    grid-template-areas:
+        "heading heading"
+        "description description"
+        "date button"
+        "attendees button";
+    place-content: space-between;
+    padding: .8rem 2rem;
+    width: calc(100vw - 6.2rem);
+}
+
 .card-date {
     grid-area: date;
     color: #CACDD0;
@@ -61,44 +78,54 @@
 }
 
 /* card list view styles */
-.card-list-view {
-    display: grid;
-    grid-template-areas:
-        "heading heading"
-        "description description"
-        "date button"
-        "attendees button";
-    place-content: space-between;
-    width: calc(94vw - 3rem - 5rem);
-    /* main container w3,  card 5*/
-}
-.card-list-view .author{
+
+.card-list-view .author {
     display: none;
 }
-.card-list-view h2.headline{
+
+.card-list-view h2.headline {
     font-size: 1.1rem;
 }
 
-@media(min-width:450px) {
-    .card {
-        margin: 1rem;
+@media(min-width:600px) {
+
+    .container.list-display {
+        margin: 0 5vw;
     }
 
-    .card-grid-view {
-        min-height: 296px;
-        width: 24rem;
+    .list-display .cards-ctr a {
+        width: 100%;
+    }
+
+    .card.card-list-view {
+        margin: .5rem 0;
+        width: calc(100% - 4rem);
+    }
+    .detail .card-grid-view {
+        max-width: unset;
+        width: calc(100% - 5rem);
     }
 }
 
 /* card list view -> horizontal single line */
 @media(min-width:1000px) {
     .card-list-view {
-        grid-template-columns:20% 25% 10% 10% 5% 10%;
+        grid-template-columns: 20% 25% 10% 10% 5% 10%;
         grid-template-areas:
             "heading description author date attendees button";
         align-items: center;
     }
-    .card-list-view .author{
+
+    .card-list-view .author {
         display: inline-block;
+    }
+
+    .card-list-view .headline {
+        line-height: normal;
+    }
+
+    .detail .card-grid-view {
+        max-width: unset;
+        width: calc(100% - 5rem);
     }
 }

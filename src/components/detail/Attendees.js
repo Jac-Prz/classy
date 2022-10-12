@@ -1,9 +1,9 @@
 const Attendees = (props) => {
     return (
-        <div className="card-container">
+        <div className="card attendees-ctr">
             <h2 className="headline">Attendees</h2>
-            <div className="attendees">
-                <div className="antendee-container">
+            <div >
+                <div>
                     {props.attendees && props.attendees.map((name, index) => {
                         return <div className="attendee" key={index}>{name}</div>
                     })}
