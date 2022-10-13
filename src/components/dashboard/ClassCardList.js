@@ -18,7 +18,7 @@ const ClassCardList = (props) => {
             <p className="card-desc">{limitCharacters(props.data.description)}</p>
             <p className="card-attend">{props.data.attendees.length} of {props.data.no_of_places}</p>
             <div className="card-btn">
-            <CardButton data={props.data} />
+            <CardButton data={props.data} reset={() => {props.reset()}}/>
             </div>
         </div>
     );

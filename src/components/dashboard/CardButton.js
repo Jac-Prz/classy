@@ -11,7 +11,10 @@ const CardButton = (props) => {
     const location = useLocation();
 
     useEffect(() => {
-        if (props.data.created_by === user._id) {
+        console.log(props.data.attendees.length)
+        if (props.data.attendees.length === props.data.no_of_places && !props.data.attendees.includes(user.full_name)) {
+            setBtnType("full")
+        } else if (props.data.created_by === user._id) {
             setBtnType("edit")
         } else if (props.data.attendees.includes(user.full_name)) {
             setBtnType("leave")
@@ -22,7 +25,9 @@ const CardButton = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (btnType === "join") {
+        if (btnType === "full") {
+            //nothing happens
+        } else if (btnType === "join") {
             subscribeToClass()
         } else if (btnType === "leave") {
             leaveClass()
@@ -30,7 +35,7 @@ const CardButton = (props) => {
             navigate(`/editclass/${props.data._id}`);
         }
     }
- 
+
     const data = {
         class_id: props.data._id,
         username: user.full_name
@@ -39,6 +44,7 @@ const CardButton = (props) => {
     const subscribeToClass = async () => {
         try {
             const response = await axios.post('/subscribe/', JSON.stringify(data))
+            console.log(response)
             setBtnType("leave")
             if (location.pathname.includes("detail")) {
                 props.reset()
@@ -54,8 +60,9 @@ const CardButton = (props) => {
     }
 
     const leaveClass = async () => {
-         try {
-            const response = await axios.delete('/subscribe/', JSON.stringify(data))
+        try {
+            const response = await axios.delete('/subscribe/', { data: JSON.stringify(data) })
+            console.log(response)
             setBtnType("join")
             if (location.pathname.includes("detail")) {
                 props.reset()
@@ -73,6 +80,7 @@ const CardButton = (props) => {
     return (
         <button
             className={`btn-sml ${btnType}`}
+            style={{cursor: (btnType === "full") ? "not-allowed": "pointer"}}
             onClick={handleSubmit}>
             {btnType.toUpperCase()}
         </button>

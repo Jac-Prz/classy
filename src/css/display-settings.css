@@ -7,7 +7,7 @@
 }
 
 @media(min-width:600px) {
-    
+
     .list-display .display-settings {
         padding: 0 .5rem;
     }
@@ -23,18 +23,7 @@
     }
 }
 
-.gry-bld {
-    color: #A9AEB4;
-    letter-spacing: 1px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.drk {
-    color: #323C46;
-}
-
-/* LEFT SIDE - showing options */
+/* LEFT SIDE - showing options dropdown*/
 .showing-options {
     display: flex;
     align-items: flex-start;
@@ -77,8 +66,8 @@
     .showing-options ul {
         display: grid;
         grid-template-areas: "allclass future past";
-
     }
+
     .all {
         grid-area: allclass;
     }
@@ -92,7 +81,7 @@
     }
 }
 
-/* RIGHT SIDE - layout */
+/* RIGHT SIDE - layout options*/
 
 .layout-icon {
     display: flex;

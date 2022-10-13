@@ -1,18 +1,24 @@
+import { useState } from "react";
 import Header from "../components/header/Header";
 import NewClassForm from "../components/NewClassForm";
 import "../css/new-class.css"
 
 const NewClass = () => {
-      return (
+
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    return (
         <div className="main-container">
-            <Header topRight="userIcon" />
+            <Header topRight="userIcon" backCross={true} />
             <section className="new-class-ctr">
                 <div>
                     <div>
                         <h2 className="headline">Create a new class.</h2>
-                        <p className="sub-head">Enter details below.</p>
+                        <p className="sub-head" style={{ color: errorMsg ? "#FF0000" : "#949EA8" }}>
+                            {!errorMsg ? "Enter details below." : errorMsg}
+                        </p>
                     </div>
-                    <NewClassForm />
+                    <NewClassForm setError={(errmsg) => setErrorMsg(errmsg)} />
                 </div>
             </section>
         </div>

@@ -1,3 +1,9 @@
+.class-detail-ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .detail-ctr {
     margin: 0 5vw;
 }

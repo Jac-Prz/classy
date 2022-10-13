@@ -1,11 +1,18 @@
+import useAuth from "../../context/useAuthHook"
+
 const Attendees = (props) => {
+
+    const {user} = useAuth()
+
     return (
         <div className="card attendees-ctr">
             <h2 className="headline">Attendees</h2>
             <div >
                 <div>
                     {props.attendees && props.attendees.map((name, index) => {
-                        return <div className="attendee" key={index}>{name}</div>
+                        return (name === user.full_name) 
+                        ? <div className="attendee you" key={index}>You</div>
+                        : <div className="attendee" key={index}>{name}</div>
                     })}
                 </div>
             </div>
@@ -15,8 +22,4 @@ const Attendees = (props) => {
 
 export default Attendees;
 
-//once login complete, and global with user details exists, add an if statement to get "you"
 
-// if(name === yourName) {
-//     return <div className="attendee you">You</div>
-// }

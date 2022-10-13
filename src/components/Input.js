@@ -16,6 +16,7 @@ const Input = (props) => {
                 onChange={props.onChange}
                 suggested={props.suggested && props.suggested}
                 style={{ borderBottom: props.error ? "solid 1px #FF0000" : "solid 1px #C9CED3" }}
+                className={props.cassName}
                 autoComplete="off"
             />
         </div>

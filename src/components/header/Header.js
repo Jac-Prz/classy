@@ -11,14 +11,15 @@ const Header = (props) => {
         <header>
             <h3>Classy.io</h3>
             {props.back ? <div>
-                <Link to="/" className="back"><FontAwesomeIcon icon={faArrowLeft} style={{fontSize: ".6rem"}}/>  Back to classes</Link>
+                <Link to="/" className="back arrow"><FontAwesomeIcon icon={faArrowLeft} /> <span>Back to classes</span></Link>
             </div> : null}
             <div className="top-right">
                 {props.topRight &&
                     (props.topRight === "signin") ? <AlternateLogin linkTo="signUp" />
                     : (props.topRight === "signup") ? <AlternateLogin linkTo="signIn" />
-                        : (props.topRight === "userIcon") ? <UserIcon />
-                            : <FontAwesomeIcon icon={faXmark} />
+                        : (props.backCross) ? <Link to="/" className="back"><FontAwesomeIcon icon={faXmark} /> <span>Close</span></Link>
+                            : (props.topRight === "userIcon") ? <UserIcon /> : null
+                            
                 }
             </div>
         </header>

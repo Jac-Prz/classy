@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const AddButton = () => {
     return (
         <div className="add-btn-ctr" >
-            <Link to="/newclass" className="add-button centered add">
+            <Link to="/newclass" className="add-button centered drk">
                 <FontAwesomeIcon icon={faPlus} />
             </Link>
         </div>

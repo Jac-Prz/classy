@@ -1,6 +1,6 @@
 import "../css/detail.css"
 import Header from "../components/header/Header";
-import EditClass from "../components/detail/EditClass";
+import EditClassForm from "../components/detail/EditClassForm";
 import DisplayView from "../components/detail/DisplayView";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState} from "react";
@@ -27,7 +27,7 @@ const Detail = (props) => {
         __v: 0
     });
 
-    const fetchClass = async () => {
+    const getClass = async () => {
         try{
             const response = await axios.get(`/class/${classId}`);
             setClassData(response.data);
@@ -42,15 +42,15 @@ const Detail = (props) => {
     }
 
     useState(() => {
-        fetchClass()
+        getClass()
     })
 
     return (
         <div className="main-container">
             <Header topRight="userIcon" back={true} />
             {!props.edit
-                ? <DisplayView data={classData} reset={() => fetchClass()} />
-                : <EditClass data={classData} reset={() => fetchClass()} />
+                ? <DisplayView detail={true} data={classData} reset={() => getClass()} />
+                : <EditClassForm data={classData} reset={() => getClass()} />
             }
         </div>
     );

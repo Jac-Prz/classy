@@ -6,7 +6,7 @@ import { useState } from 'react'
 const DisplaySettings = (props) => {
 
     const [selectedOption, setSelectedOption] = useState("ALL CLASSES")
-    const [dropdown, setDropdown] = useState("hidden");
+    const [hideDropdown, setHideDropdown] = useState(true);
 
     const selectedStyle = {
         order: "1",
@@ -21,12 +21,12 @@ const DisplaySettings = (props) => {
     const changeDisplayedClasses = (e) => {
         setSelectedOption(e.target.innerHTML)
         props.setShowingOption(e.target.innerHTML)
-        setDropdown("hidden")
+        setHideDropdown(true);
     }
 
     return (
         <div className="display-settings">
-            <div className={"gry-bld showing-options " + dropdown}>
+            <div className={hideDropdown ? "gry-bld showing-options hidden" : "gry-bld showing-options expanded"}>
                 <p className="gry-bld ">SHOW: </p>
                 <ul>
                     <li
@@ -52,7 +52,7 @@ const DisplaySettings = (props) => {
                         PAST CLASSES
                     </li>
                 </ul>
-                <p className="gry-bld" onClick={() => setDropdown("expanded")}><FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
+                <p className="gry-bld" onClick={() => setHideDropdown(!hideDropdown)}><FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
             </div>
             <div className='layout-icon'>
                 <div

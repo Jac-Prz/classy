@@ -41,6 +41,26 @@ p {
   align-items: center;
 }
 
+.tick {
+  background-color: #22D486;
+}
+
+.gry-bld {
+  color: #A9AEB4;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.drk {
+  color: #323C46;
+}
+
+.sml-gry {
+  color: #949EA8;
+  font-size: 11.2px;
+}
+
 /* Inputs */
 .input-container {
   width: 90%;
@@ -81,6 +101,7 @@ button {
   font-weight: 700;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .btn-green, .join {
@@ -88,7 +109,7 @@ button {
   color: #ffffff;
 }
 
-.btn-grey, .edit {
+.btn-grey, .edit .full{
   background-color: #D9DCE1;
   color: #A9AEB4;
 }
@@ -115,4 +136,31 @@ button {
   font-size: 14px;
   width: 100px;
   height: 32px;
+}
+
+
+/* add new class button */
+.add-btn-ctr {
+  display: flex;
+  justify-content: end;
+  margin-top: 1.5rem;
+}
+
+.add-button {
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  background-color: #323C46;
+  color: #ffffff;
+  box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.15);
+}
+
+.add-button {
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.15);
 }
