@@ -108,7 +108,7 @@ const EditClassForm = (props) => {
                 </div>
                 <Attendees attendees={props.data.attendees} />
             </div>
-            <TickButton onClick={handleSubmit} />
+            {/* <TickButton onClick={handleSubmit} /> */}
         </div>
     );
 }

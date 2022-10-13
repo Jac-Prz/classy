@@ -2,6 +2,8 @@ import "../css/detail.css"
 import Header from "../components/header/Header";
 import EditClassForm from "../components/detail/EditClassForm";
 import DisplayView from "../components/detail/DisplayView";
+import AddButton from "../components/dashboard/AddButton";
+import TickButton from "../components/detail/TickButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState} from "react";
 import axios from "../api/axios";
@@ -43,7 +45,7 @@ const Detail = (props) => {
 
     useState(() => {
         getClass()
-    })
+    }, [])
 
     return (
         <div className="main-container">
@@ -52,6 +54,7 @@ const Detail = (props) => {
                 ? <DisplayView detail={true} data={classData} reset={() => getClass()} />
                 : <EditClassForm data={classData} reset={() => getClass()} />
             }
+            { !props.edit ? <AddButton /> : <TickButton /> }
         </div>
     );
 }

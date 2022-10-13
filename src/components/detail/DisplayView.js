@@ -4,15 +4,14 @@ import ClassDetail from "./ClassDetail";
 import ClassCardGrid from "../dashboard/ClassCardGrid";
 
 const DisplayView = (props) => {
-    return ( 
+    return (
         <div className="detail-ctr">
-                <ClassDetail classId={props.data._id} bin={false} />
-                <div className="detail">
-                    <ClassCardGrid detail={true} data={props.data} reset={() => {props.reset()}}/> 
-                    <Attendees attendees={props.data.attendees} />
-                </div>
-                <AddButton />
+            <ClassDetail classId={props.data._id} bin={false} />
+            <div className="detail">
+                <ClassCardGrid detail={true} data={props.data} reset={() => { props.reset() }} />
+                <Attendees attendees={props.data.attendees} />
             </div>
-     );
+        </div>
+    );
 }
 export default DisplayView;

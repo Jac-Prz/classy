@@ -30,7 +30,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         getClasses();
-    })
+    },[])
 
     return (
         <div className="main-container">
@@ -48,31 +48,33 @@ const Dashboard = () => {
                             <img src={"graduate.png"} />
                         </div>
                     </div>
-                    : <div className={gridDisplay ? "container grid-display" : "container list-display"}>
-                        <DisplaySettings
-                            setShowingOption={(value) => setFilter(value)}
-                            gridDisplay={gridDisplay}
-                            setToGrid={() => setGridDisplay(true)}
-                            setToList={() => setGridDisplay(false)}
-                        />
-                        <div className="cards-ctr">
-                            {allClasses.filter((cl) => {
-                                if (filter === "ALL CLASSES") {
-                                    return cl
-                                } else if (filter === "FUTURE CLASSES") {
-                                    return new Date(cl.date) > new Date()
-                                } else if (filter === "PAST CLASSES") {
-                                    return new Date(cl.date) < new Date()
-                                }
-                            }).map((data, index) => {
-                                return gridDisplay
-                                    ? <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
-                                        <ClassCardGrid data={data} reset={() => getClasses()} />
-                                    </Link>
-                                    : <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
-                                        <ClassCardList data={data} reset={() => getClasses()} />
-                                    </Link>
-                            })}
+                    : <div>
+                        <div className={gridDisplay ? "container grid-display" : "container list-display"}>
+                            <DisplaySettings
+                                setShowingOption={(value) => setFilter(value)}
+                                gridDisplay={gridDisplay}
+                                setToGrid={() => setGridDisplay(true)}
+                                setToList={() => setGridDisplay(false)}
+                            />
+                            <div className="cards-ctr">
+                                {allClasses.filter((cl) => {
+                                    if (filter === "ALL CLASSES") {
+                                        return cl
+                                    } else if (filter === "FUTURE CLASSES") {
+                                        return new Date(cl.date) > new Date()
+                                    } else if (filter === "PAST CLASSES") {
+                                        return new Date(cl.date) < new Date()
+                                    }
+                                }).map((data, index) => {
+                                    return gridDisplay
+                                        ? <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
+                                            <ClassCardGrid data={data} reset={() => getClasses()} />
+                                        </Link>
+                                        : <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
+                                            <ClassCardList data={data} reset={() => getClasses()} />
+                                        </Link>
+                                })}
+                            </div>
                         </div>
                         <AddButton />
                     </div>

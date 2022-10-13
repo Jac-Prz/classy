@@ -21,7 +21,7 @@ const CardButton = (props) => {
         } else if (!props.data.attendees.includes(user.full_name)) {
             setBtnType("join")
         }
-    }, [props])
+    }, [props.data])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -80,7 +80,7 @@ const CardButton = (props) => {
     return (
         <button
             className={`btn-sml ${btnType}`}
-            style={{cursor: (btnType === "full") ? "not-allowed": "pointer"}}
+            style={{ cursor: (btnType === "full") ? "not-allowed" : "pointer" }}
             onClick={handleSubmit}>
             {btnType.toUpperCase()}
         </button>
