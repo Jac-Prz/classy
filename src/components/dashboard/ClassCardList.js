@@ -1,7 +1,7 @@
 import CardButton from "./CardButton"
+
 const ClassCardList = (props) => {
 
-    // list view - max 30 characters in desc
     const limitCharacters = (string) => {
         if (string.length > 30) {
             return string.slice(0, 30) + "..."

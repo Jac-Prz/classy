@@ -2,9 +2,9 @@ import Input from "../Input";
 import TickButton from "./TickButton";
 import Attendees from "./Attendees"
 import ClassDetail from "./ClassDetail";
+import axios from "../../api/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 
 const EditClass = (props) => {
 
@@ -27,31 +27,22 @@ const EditClass = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const json = editClass();
-        console.log(json)
-        if (json) {
-            props.reset();
-            navigate(`/detail/${props.data._id}`);
-        }
+        editClass();
     }
 
     const editClass = async () => {
-        const response = await fetch(
-            `https://testproject.optimistinc.com/api/class/${props.data._id}`,
-            {
-                method: "PUT",
-                headers: {
-                    'Content-Type': "application/json",
-                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
-                },
-                body: JSON.stringify(formData)
-            });
-        if (!response.ok) {
-            console.log(response)
+        try {
+            const response = await axios.put(`/class/${props.data._id}`, JSON.stringify(formData));
+            props.reset();
+            navigate(`/detail/${props.data._id}`);
+        } catch (err) {
+            if (err.status === 404) {
+                navigate('/404')
+            } else {
+                navigate('/error')
+            }
         }
-        return await response.json()
     }
-
 
     return (
         <div className="detail-ctr">
@@ -96,7 +87,6 @@ const EditClass = (props) => {
             <TickButton onClick={handleSubmit} />
         </div>
     );
-
 }
 
 export default EditClass;

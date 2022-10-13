@@ -1,3 +1,4 @@
+import axios from "../../api/axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
@@ -7,20 +8,17 @@ const ClassDetail = (props) => {
     const navigate = useNavigate()
 
     const deleteClass = async () => {
-        const response = await fetch(
-            `https://testproject.optimistinc.com/api/class/${props.classId}`,
-            {
-                method: "delete",
-                headers: {
-                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
-                }
-            })
-        if (!response.ok){
+        try{
+            const response = await axios.delete( `/class/${props.classId}`)
             console.log(response)
-        }else{
-            const json = await response.json()
-            if (json.deletedCount == 1) {
+            if (response.data.deletedCount == 1) {
                 navigate('/')
+            } else throw 404
+        } catch (err){
+            if (err.status === 404) {
+                navigate('/404')
+            } else {
+                navigate('/error')
             }
         }
     }

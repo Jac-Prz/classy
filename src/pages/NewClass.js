@@ -1,5 +1,5 @@
 import Header from "../components/header/Header";
-import NewClassForm from "../components/newclass/NewClassForm";
+import NewClassForm from "../components/NewClassForm";
 import "../css/new-class.css"
 
 const NewClass = () => {
@@ -14,7 +14,6 @@ const NewClass = () => {
                     </div>
                     <NewClassForm />
                 </div>
-
             </section>
         </div>
     );

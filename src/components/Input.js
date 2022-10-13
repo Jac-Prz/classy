@@ -1,4 +1,7 @@
 const Input = (props) => {
+
+
+
     return (
         <div>
             <label htmlFor={props.name}>
@@ -12,7 +15,7 @@ const Input = (props) => {
                 value={props.value}
                 onChange={props.onChange}
                 suggested={props.suggested && props.suggested}
-                style={{borderBottom: props.error ? "solid 1px #FF0000" : "solid 1px #C9CED3"}}
+                style={{ borderBottom: props.error ? "solid 1px #FF0000" : "solid 1px #C9CED3" }}
                 autoComplete="off"
             />
         </div>

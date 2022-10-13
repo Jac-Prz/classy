@@ -1,14 +1,13 @@
-import Input from "../Input";
+import Input from "./Input";
 import { useContext, useState } from "react";
-import { UserContext } from "../../context/UserContext";
-import { Navigate, useNavigate } from "react-router-dom";
-
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import axios from "../api/axios";
 
 const NewClassForm = (props) => {
+
     const navigate = useNavigate()
-
     const { user } = useContext(UserContext);
-
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -33,29 +32,22 @@ const NewClassForm = (props) => {
 
     const addClass = async (e) => {
         e.preventDefault();
-        const response = await fetch(
-            "https://testproject.optimistinc.com/api/class/",
-            {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
-                },
-                body: JSON.stringify(data)
-            }
-        )
-        console.log(response)
-        if (!response.ok) {
+        try {
+            const response = await axios.post("/class/", JSON.stringify(data))
             console.log(response)
+            navigate(`/detail/${response.data._id}`)
+        } catch (err) {
+            console.log(err)
+            if (err.status === 404) {
+                navigate('/404')
+            } else {
+                navigate('/error')
+            }
         }
-        const json = await response.json()
-        console.log(json)
-//navigate to new class?
-        navigate("/")
     }
 
     return (
-        <form>
+        <form onSubmit={addClass}>
             <div className="input-container">
                 <Input
                     name="title"
@@ -88,10 +80,9 @@ const NewClassForm = (props) => {
                     onChange={handleFormData}
                     value={formData.capacity} />
             </div>
-            <button className="btn-lrg btn-green" onClick={addClass}>CREATE NEW CLASS</button>
+            <button className="btn-lrg btn-green">CREATE NEW CLASS</button>
         </form>
     );
-
 }
 
 export default NewClassForm;

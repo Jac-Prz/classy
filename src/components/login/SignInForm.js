@@ -1,26 +1,22 @@
 import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
-import { useState } from "react";
 import useAuth from "../../context/useAuthHook";
+import axios from "../../api/axios"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignInForm = (props) => {
-    //navigate
+const SignInForm = (props) => {    const { setUser } = useAuth();
     const navigate = useNavigate();
-    // state
     const [errorField, setErrorField] = useState("")
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
 
-    // context
-    const { setUser } = useAuth();
-
-    //functions
     const handleFormData = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!formData.email) {
@@ -39,35 +35,30 @@ const SignInForm = (props) => {
             email: formData.email,
             password: formData.password
         }
-        const response = await fetch(
-            'https://testproject.optimistinc.com/api/login',
-            {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
-                },
-                body: JSON.stringify(data)
-            }
-        );
-        if (response.ok) {
-            const json = await response.json()
-            console.log(json);
-            const fullName = json.last_name ? json.first_name + " " + json.last_name : json.first_name;
+        try {
+            const response = await axios.post('/login', JSON.stringify(data))
+            const fullName = response.data.last_name ? response.data.first_name + " " + response.data.last_name : response.data.first_name;
             setUser({
-                first_name: json.first_name,
-                last_name: json.last_name,
+                first_name: response.data.first_name,
+                last_name: response.data.last_name,
                 full_name: fullName,
-                email: json.email,
-                _id: json._id
+                email: response.data.email,
+                _id: response.data._id
             })
             setFormData({
                 email: "",
                 password: ""
             })
             navigate('/');
-        } else {
-            props.handleErrorMsg("Oops! That email and pasword combination is not valid.");
+        } catch (err) {
+            console.log(err.response)
+            if (err.response.status === 400 && err.response.data === "invalid credentials provided") {
+                props.handleErrorMsg("Oops! That email and pasword combination is not valid.");
+            } if (err.response.status === 400 && err.response.data === "UserNotFound") {
+                props.handleErrorMsg("Oops! This user doesnt exist");
+            } else {
+                props.handleErrorMsg("Oops! Something went wrong");
+            }
         }
     }
 

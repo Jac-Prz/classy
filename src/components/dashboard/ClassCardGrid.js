@@ -1,10 +1,8 @@
+import CardButton from './CardButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import CardButton from './CardButton';
-
 
 const ClassCardGrid = (props) => {
-
     return (
         <div className="card card-grid-view" >
             <p className="card-date">{(new Date(props.data.date)).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year:'numeric'})}</p>

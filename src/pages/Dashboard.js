@@ -5,56 +5,40 @@ import DisplaySettings from "../components/dashboard/DisplaySettings";
 import ClassCardGrid from "../components/dashboard/ClassCardGrid";
 import ClassCardList from "../components/dashboard/ClassCardList";
 import AddButton from "../components/dashboard/AddButton";
-// import allClasses from "../data/data.json"
-import { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from 'react-router-dom';
-import { UserContext } from "../context/UserContext";
+import axios from "../api/axios"
+import { useEffect, useState } from "react";
+import { Link, useNavigate, } from 'react-router-dom';
 
 const Dashboard = () => {
-    const { user } = useContext(UserContext)
-    // const allClasses, setAllClasses = useState() we will set all classes with a call to the api
+
+    const navigate = useNavigate()
     const [gridDisplay, setGridDisplay] = useState(true);
     const [allClasses, setAllClasses] = useState([]);
     const [filter, setFilter] = useState("ALL CLASSES");
 
     const fetchUsers = async () => {
-        const response = await fetch(
-            "https://testproject.optimistinc.com/api/classes",
-            {
-                headers: {
-                    optimist_api_key: "bQ0V2vc2F3dKadbAuUiV",
-                },
-            }
-        );
-        const dat = await response.json();
-        console.log(dat)
-        setAllClasses(dat)
+        try {
+            const response = await axios.get('/classes')
+            setAllClasses(response.data)
+        } catch (err) {
+            if (err.response.status === 404) {
+                navigate('/404');
+            } else {
+                 navigate('/error')
+            } 
+        }
     };
 
     useEffect(() => {
         fetchUsers();
-
     }, [])
-
-
-
-    const handleFilter = (value) => {
-        setFilter(value);
-        // if (value === "ALL CLASSES") {
-        //     setFilter(cl => new Date(cl.date) > new Date());
-        // } else if (value === "FUTURE CLASSES") {
-        //     setFilter(cl => new Date(cl.date) > new Date())
-        // } else if (value === "PAST CLASSES") {
-        //     setFilter(cl => new Date(cl.date) < new Date())
-        // }
-    }
 
     return (
         <div className="main-container">
             <Header topRight="userIcon" />
             <div className={gridDisplay ? "container grid-display" : "container list-display"}>
                 <DisplaySettings
-                    setShowingOption={handleFilter}
+                    setShowingOption={(value) => setFilter(value)}
                     gridDisplay={gridDisplay}
                     setToGrid={() => setGridDisplay(true)}
                     setToList={() => setGridDisplay(false)}

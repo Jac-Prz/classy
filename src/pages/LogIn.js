@@ -8,8 +8,7 @@ import LogInMsg from "../components/login/LogInMsg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import { UserContext } from "../context/UserContext";
+import { useState } from "react";
 
 const LogIn = (props) => {
 
@@ -19,7 +18,6 @@ const LogIn = (props) => {
         signinError: false,
         signupError: false
     })
-    const { user } = useContext(UserContext);
 
     return (
         <div className="main-container login-page">

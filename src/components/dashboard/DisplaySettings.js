@@ -4,6 +4,7 @@ import { faCaretDown, faGrip, faGripLines } from '@fortawesome/free-solid-svg-ic
 import { useState } from 'react'
 
 const DisplaySettings = (props) => {
+
     const [selectedOption, setSelectedOption] = useState("ALL CLASSES")
     const [dropdown, setDropdown] = useState("hidden");
 
@@ -17,7 +18,7 @@ const DisplaySettings = (props) => {
         color: "#A9AEB4"
     }
 
-    const handleListClick = (e) => {
+    const changeDisplayedClasses = (e) => {
         setSelectedOption(e.target.innerHTML)
         props.setShowingOption(e.target.innerHTML)
         setDropdown("hidden")
@@ -31,21 +32,22 @@ const DisplaySettings = (props) => {
                     <li
                         className="all"
                         style= {(selectedOption === "ALL CLASSES")  ? selectedStyle : defaultStyle}
-                        onClick={handleListClick}
+                        onClick={changeDisplayedClasses}
                         >
                         ALL CLASSES
                     </li>
+                    
                     <li
                     className="future"
                         style= {(selectedOption === "FUTURE CLASSES")  ? selectedStyle : defaultStyle}
-                        onClick={handleListClick}
+                        onClick={changeDisplayedClasses}
                         >
                         FUTURE CLASSES
                     </li>
                     <li
                     className="past"
                         style= {(selectedOption === "PAST CLASSES")  ? selectedStyle : defaultStyle}
-                        onClick={handleListClick}
+                        onClick={changeDisplayedClasses}
                         >
                         PAST CLASSES
                     </li>
@@ -66,7 +68,7 @@ const DisplaySettings = (props) => {
                     <FontAwesomeIcon icon={faGripLines} />
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 

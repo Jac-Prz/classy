@@ -1,13 +1,15 @@
 import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
-import { useContext, useState } from "react";
-import { UserContext } from "../../context/UserContext";
+import axios from "../../api/axios"
+import useAuth from "../../context/useAuthHook";
+import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 const SignUpForm = (props) => {
 
+    const { setUser } = useAuth();
     const navigate = useNavigate();
-    //state
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -17,10 +19,6 @@ const SignUpForm = (props) => {
     });
     const [errorField, setErrorField] = useState("")
 
-    //context
-    const { setUser } = useContext(UserContext)
-
-    //functions
     const handleFormData = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
@@ -52,27 +50,18 @@ const SignUpForm = (props) => {
             email: formData.email,
             password: formData.password
         }
-        const response = await fetch(
-            "https://testproject.optimistinc.com/api/signup",
-            {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'optimist_api_key': "bQ0V2vc2F3dKadbAuUiV",
-                },
-                body: JSON.stringify(data)
-            }
-        );
-        if (response.ok) {
-            const json = await response.json();
-            console.log(json);
-            const fullName = json.last_name ? json.first_name + " " + json.last_name : json.first_name
+        try {
+            const response = await axios.post('/signup', JSON.stringify(data))
+            console.log(response.status)
+            console.log(response.data)
+
+            const fullName = response.data.last_name ? response.data.first_name + " " + response.data.last_name : response.data.first_name;
             setUser({
-                first_name: json.first_name,
-                last_name: json.last_name,
+                first_name: response.data.first_name,
+                last_name: response.data.last_name,
                 full_name: fullName,
-                email: json.email,
-                _id: json._id
+                email: response.data.email,
+                _id: response.data._id
             })
             setFormData({
                 firstName: "",
@@ -80,16 +69,20 @@ const SignUpForm = (props) => {
                 email: "",
                 password: "",
                 repeatPassword: ""
-            });
-            navigate('/')
-        } else {
-            props.handleErrorMsg("Something went wrong")
+            })
+            navigate('/');
+        } catch (err) {
+            console.log(err.response)
+            if (err.response.status === 409 || err.response.data === "message for duplicate emails..." || err.response.data === "message for duplicate emails...") {
+                props.handleErrorMsg("Oops! This user already exists");
+            } else {
+                props.handleErrorMsg("Could not add user");
+            }
         }
-       
-    };
+    }
 
     return (
-        <form >
+        <form onSubmit={handleSubmit}>
             <div className="input-container">
                 <Input
                     name="firstName"
@@ -133,7 +126,7 @@ const SignUpForm = (props) => {
                 />
             </div>
             <AlternateLogin linkTo="signIn" />
-            <button className="btn-lrg btn-green" onClick={handleSubmit}>SIGN IN</button>
+            <button className="btn-lrg btn-green">SIGN IN</button>
         </form>
     );
 

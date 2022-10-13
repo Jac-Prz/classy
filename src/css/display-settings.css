@@ -1,12 +1,13 @@
 .display-settings {
     display: flex;
     justify-content: space-between;
-    margin: 2.5rem auto 1rem;
+    margin: 2.5rem -1rem 1rem;
     color: #A9AEB4;
-    padding: 0 .5rem;
+    padding: 0;
 }
 
 @media(min-width:600px) {
+    
     .list-display .display-settings {
         padding: 0 .5rem;
     }
