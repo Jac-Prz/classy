@@ -19,7 +19,7 @@ const Header = (props) => {
                     : (props.topRight === "signup") ? <AlternateLogin linkTo="signIn" />
                         : (props.backCross) ? <Link to="/" className="back"><FontAwesomeIcon icon={faXmark} /> <span>Close</span></Link>
                             : (props.topRight === "userIcon") ? <UserIcon /> : null
-                            
+
                 }
             </div>
         </header>

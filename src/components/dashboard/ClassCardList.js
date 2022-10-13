@@ -1,9 +1,7 @@
-import { useState } from "react"
+
 import CardButton from "./CardButton"
 
 const ClassCardList = (props) => {
-
-const [attendees, setAttendees] = useState(0)
 
     const limitCharacters = (string) => {
         if (string.length > 30) {
@@ -13,8 +11,6 @@ const [attendees, setAttendees] = useState(0)
          }
     }
 
-
-
     return (
         <div className="card card-list-view">
             <p className="card-date">{props.data.date}</p>
@@ -23,7 +19,7 @@ const [attendees, setAttendees] = useState(0)
             <p className="card-desc">{limitCharacters(props.data.description)}</p>
             <p className="card-attend">{props.data.attendees.length} of {props.data.no_of_places}</p>
             <div className="card-btn">
-            <CardButton data={props.data} join={() => setAttendees(attendees + 1)} leave={() => setAttendees(attendees - 1)}/>
+            <CardButton data={props.data} reset={() => props.reset()}/>
             </div>
         </div>
     );

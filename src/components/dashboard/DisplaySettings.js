@@ -36,8 +36,7 @@ const DisplaySettings = (props) => {
                         >
                         ALL CLASSES
                     </li>
-                    
-                    <li
+                                        <li
                     className="future"
                         style= {(selectedOption === "FUTURE CLASSES")  ? selectedStyle : defaultStyle}
                         onClick={changeDisplayedClasses}

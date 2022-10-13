@@ -12,12 +12,11 @@ const ClassCardGrid = (props) => {
             </div>
             <p className="card-desc">{props.data.description}</p>
             <p className="card-attend">
-                <FontAwesomeIcon icon={faUser} style={{marginRight: ".5rem"}}/>
+                <FontAwesomeIcon icon={faUser} style={{ marginRight: ".5rem" }} />
                 {(props.detail && props.data.attendees.length == 0)
                     ? "No atendees yet, be the first to join!"
                     : props.data.attendees.length + " of " + props.data.no_of_places
-            }
-
+                }
             </p>
             <div className="card-btn">
                 <CardButton data={props.data} reset={() => props.reset()} />

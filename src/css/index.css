@@ -20,6 +20,7 @@ p {
   font-size: 1.5rem;
   line-height: 3rem;
 }
+
 .sub-head {
   color: #949EA8;
   font-size: 14px;
@@ -35,7 +36,7 @@ p {
   margin: 1rem auto;
 }
 
-.centered{
+.centered {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,12 +68,14 @@ p {
   max-width: 30rem;
   margin: 0 auto;
 }
-@media(min-width:1000px){
+
+@media(min-width:1000px) {
   .input-container {
     width: 100%;
-    margin: 0 
+    margin: 0
   }
 }
+
 input {
   font-size: 1rem;
   padding: .5rem 0;
@@ -104,17 +107,20 @@ button {
   cursor: pointer;
 }
 
-.btn-green, .join {
+.btn-green,
+.join {
   background-color: #22D486;
   color: #ffffff;
 }
 
-.btn-grey, .edit .full{
+.btn-grey,
+.edit .full {
   background-color: #D9DCE1;
   color: #A9AEB4;
 }
 
-.btn-red, .leave {
+.btn-red,
+.leave {
   background-color: #FF0000;
   color: #ffffff;
 }
@@ -127,7 +133,7 @@ button {
 .btn-lrg {
   font-size: 16px;
   margin-top: 2rem;
-  width:100%;
+  width: 100%;
   max-width: 240px;
   height: 57px;
 }
@@ -152,15 +158,6 @@ button {
   font-size: 1rem;
   border-radius: 50%;
   background-color: #323C46;
-  color: #ffffff;
-  box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.15);
-}
-
-.add-button {
-  height: 3.5rem;
-  width: 3.5rem;
-  font-size: 1rem;
-  border-radius: 50%;
   color: #ffffff;
   box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.15);
 }

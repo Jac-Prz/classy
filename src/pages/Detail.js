@@ -2,19 +2,14 @@ import "../css/detail.css"
 import Header from "../components/header/Header";
 import EditClassForm from "../components/detail/EditClassForm";
 import DisplayView from "../components/detail/DisplayView";
-import AddButton from "../components/dashboard/AddButton";
-import TickButton from "../components/detail/TickButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState} from "react";
+import { useState } from "react";
 import axios from "../api/axios";
-
 
 const Detail = (props) => {
 
     const navigate = useNavigate();
-
     let { classId } = useParams();
-
     const [classData, setClassData] = useState({
         _id: "",
         classname: "",
@@ -30,16 +25,15 @@ const Detail = (props) => {
     });
 
     const getClass = async () => {
-        try{
+        try {
             const response = await axios.get(`/class/${classId}`);
             setClassData(response.data);
-            console.log(response)
-        } catch (err){
+        } catch (err) {
             if (err.response.status === 404) {
                 navigate('/404');
             } else {
-                 navigate('/error')
-            } 
+                navigate('/error')
+            }
         }
     }
 
@@ -51,10 +45,9 @@ const Detail = (props) => {
         <div className="main-container">
             <Header topRight="userIcon" back={true} />
             {!props.edit
-                ? <DisplayView detail={true} data={classData} reset={() => getClass()} />
-                : <EditClassForm data={classData} reset={() => getClass()} />
+                ? <DisplayView detail={true} data={classData} reset={getClass} />
+                : <EditClassForm data={classData} reset={getClass} />
             }
-            { !props.edit ? <AddButton /> : <TickButton /> }
         </div>
     );
 }

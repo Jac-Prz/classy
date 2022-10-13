@@ -30,7 +30,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         getClasses();
-    },[])
+    }, [])
 
     return (
         <div className="main-container">
@@ -68,18 +68,18 @@ const Dashboard = () => {
                                 }).map((data, index) => {
                                     return gridDisplay
                                         ? <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
-                                            <ClassCardGrid data={data} reset={() => getClasses()} />
+                                            <ClassCardGrid data={data} reset={getClasses} />
                                         </Link>
                                         : <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
-                                            <ClassCardList data={data} reset={() => getClasses()} />
+                                            <ClassCardList data={data} reset={getClasses} />
                                         </Link>
                                 })}
                             </div>
                         </div>
-                        <AddButton />
                     </div>
                 }
             </div>
+            <AddButton />
         </div>
     );
 }

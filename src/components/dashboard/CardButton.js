@@ -1,17 +1,15 @@
 import axios from "../../api/axios";
 import { UserContext } from "../../context/UserContext"
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CardButton = (props) => {
 
     const { user } = useContext(UserContext);
     const [btnType, setBtnType] = useState("join")
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
-        console.log(props.data.attendees.length)
         if (props.data.attendees.length === props.data.no_of_places && !props.data.attendees.includes(user.full_name)) {
             setBtnType("full")
         } else if (props.data.created_by === user._id) {
@@ -44,11 +42,8 @@ const CardButton = (props) => {
     const subscribeToClass = async () => {
         try {
             const response = await axios.post('/subscribe/', JSON.stringify(data))
-            console.log(response)
             setBtnType("leave")
-            if (location.pathname.includes("detail")) {
-                props.reset()
-            }
+            props.reset()
         }
         catch (err) {
             if (err.status === 404) {
@@ -62,11 +57,8 @@ const CardButton = (props) => {
     const leaveClass = async () => {
         try {
             const response = await axios.delete('/subscribe/', { data: JSON.stringify(data) })
-            console.log(response)
             setBtnType("join")
-            if (location.pathname.includes("detail")) {
-                props.reset()
-            }
+            props.reset()
         }
         catch (err) {
             if (err.status === 404) {

@@ -1,7 +1,5 @@
 const Input = (props) => {
 
-
-
     return (
         <div>
             <label htmlFor={props.name}>

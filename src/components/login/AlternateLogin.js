@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const AlternateLogin = (props) => {
-
     return (
         <div>
         {(props.linkTo === "signIn")

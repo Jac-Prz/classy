@@ -1,10 +1,8 @@
 import "../css/login.css"
-
 import Header from "../components/header/Header";
 import SignInForm from "../components/login/SignInForm";
 import SignUpForm from "../components/login/SignUpForm";
 import LogInMsg from "../components/login/LogInMsg";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

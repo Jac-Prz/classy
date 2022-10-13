@@ -86,7 +86,7 @@ const EditClassForm = (props) => {
                             onChange={handleFormData}
                             value={formData.date}
                             error={(errorField === "date") ? true : false}
-                            className={(formData.date.length > 0 )? "active" : null}
+                            className={(formData.date.length > 0) ? "active" : null}
                         />
                         <Input
                             name="location"
@@ -108,7 +108,7 @@ const EditClassForm = (props) => {
                 </div>
                 <Attendees attendees={props.data.attendees} />
             </div>
-            {/* <TickButton onClick={handleSubmit} /> */}
+            <TickButton onClick={handleSubmit} />
         </div>
     );
 }
