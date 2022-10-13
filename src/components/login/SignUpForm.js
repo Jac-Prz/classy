@@ -2,8 +2,11 @@ import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = (props) => {
+
+    const navigate = useNavigate();
     //state
     const [formData, setFormData] = useState({
         firstName: "",
@@ -78,6 +81,7 @@ const SignUpForm = (props) => {
                 password: "",
                 repeatPassword: ""
             });
+            navigate('/')
         } else {
             props.handleErrorMsg("Something went wrong")
         }

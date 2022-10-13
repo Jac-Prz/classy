@@ -1,9 +1,11 @@
 import Input from "../Input";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const NewClassForm = (props) => {
+    const navigate = useNavigate()
 
     const { user } = useContext(UserContext);
 
@@ -48,10 +50,8 @@ const NewClassForm = (props) => {
         }
         const json = await response.json()
         console.log(json)
-        if (json) {
-            props.success()
-        }
-        //if success redirect or set a success response and back button
+//navigate to new class?
+        navigate("/")
     }
 
     return (

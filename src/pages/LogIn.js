@@ -7,7 +7,7 @@ import LogInMsg from "../components/login/LogInMsg";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 
@@ -15,8 +15,8 @@ const LogIn = (props) => {
 
     const [msg, setMsg] = useState({
         signup: "Enter your details below.",
-        signin: "Enter your details below.", 
-        signinError: false, 
+        signin: "Enter your details below.",
+        signinError: false,
         signupError: false
     })
     const { user } = useContext(UserContext);
@@ -43,14 +43,14 @@ const LogIn = (props) => {
                                     : <LogInMsg heading="Something went wrong" msg={"Seems like someone didn’t study hard enough in programming class! Please press the refresh button and everything should be fine again."} />
                         }
                         {(props.type === "signin")
-                            ? <SignInForm handleErrorMsg={(msg) => {return setMsg({signup: "Enter your details below.", signin: msg, signinError: true})}} />
+                            ? <SignInForm handleErrorMsg={(msg) => { return setMsg({ signup: "Enter your details below.", signin: msg, signinError: true }) }} />
                             : (props.type === "signup")
-                                ? <SignUpForm handleErrorMsg={(msg) => {return setMsg({signup: msg, signin: "Enter your details below.", signupError: true})}} />
-                                : <button className="btn-lrg btn-blk">REFRESH</button>}
+                                ? <SignUpForm handleErrorMsg={(msg) => { return setMsg({ signup: msg, signin: "Enter your details below.", signupError: true }) }} />
+                                : <Link to="/"> <button className="btn-lrg btn-blk">REFRESH</button></Link>
+                        }
                     </div>
                 </section>
             </div>
-            {user ? <Navigate to="/home" /> : null}
         </div>
     );
 }

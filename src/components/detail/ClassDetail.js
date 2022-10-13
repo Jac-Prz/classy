@@ -3,7 +3,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 
 const ClassDetail = (props) => {
-
+ 
     const navigate = useNavigate()
 
     const deleteClass = async () => {
@@ -20,10 +20,9 @@ const ClassDetail = (props) => {
         }else{
             const json = await response.json()
             if (json.deletedCount == 1) {
-                navigate('/home')
+                navigate('/')
             }
         }
-        
     }
 
     return (

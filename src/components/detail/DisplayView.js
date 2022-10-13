@@ -6,10 +6,10 @@ import ClassCardGrid from "../dashboard/ClassCardGrid";
 
 
 const DisplayView = (props) => {
-    return ( 
 
+    return ( 
         <div className="detail-ctr">
-                <ClassDetail classId={props.data.classId} bin={false} />
+                <ClassDetail classId={props.data._id} bin={false} />
                 <div className="detail">
                     <ClassCardGrid data={props.data} reset={() => {props.reset()}}/> 
                     <Attendees attendees={props.data.attendees} />

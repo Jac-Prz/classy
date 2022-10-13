@@ -3,14 +3,10 @@ import Header from "../components/header/Header";
 import EditClass from "../components/detail/EditClass";
 import DisplayView from "../components/detail/DisplayView";
 import { useParams } from "react-router-dom";
-import { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { useState} from "react";
+
 
 const Detail = (props) => {
-
-    const { user } = useContext(UserContext)
-
     let { classId } = useParams();
 
     const [classData, setClassData] = useState({
@@ -45,18 +41,13 @@ const Detail = (props) => {
         fetchClass()
     })
 
-    
+
     return (
         <div className="main-container">
-            {!user ? <Navigate to="/" />
-                :
-                <div>
-                    <Header topRight="userIcon" back={true} />
-                    {!props.edit
-                        ? <DisplayView data={classData} reset={() => fetchClass()}/>
-                        : <EditClass data={classData} reset={() => fetchClass()}/>
-                    }
-                </div>
+            <Header topRight="userIcon" back={true} />
+            {!props.edit
+                ? <DisplayView data={classData} reset={() => fetchClass()} />
+                : <EditClass data={classData} reset={() => fetchClass()} />
             }
         </div>
     );

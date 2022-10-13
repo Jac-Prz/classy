@@ -51,40 +51,35 @@ const Dashboard = () => {
 
     return (
         <div className="main-container">
-            {!user
-                ? <Navigate to="/" />
-                : <div>
-                    <Header topRight="userIcon" />
-                    <div className={gridDisplay ? "container grid-display" : "container list-display"}>
-                        <DisplaySettings
-                            setShowingOption={handleFilter}
-                            gridDisplay={gridDisplay}
-                            setToGrid={() => setGridDisplay(true)}
-                            setToList={() => setGridDisplay(false)}
-                        />
-                        <div className="cards-ctr">
-                            {allClasses.filter((cl) => {
-                                if (filter === "ALL CLASSES") {
-                                    return cl
-                                } else if (filter === "FUTURE CLASSES") {
-                                    return new Date(cl.date) > new Date()
-                                } else if (filter === "PAST CLASSES") {
-                                    return new Date(cl.date) < new Date()
-                                }
-                            }).map((data, index) => {
-                                return gridDisplay
-                                    ? <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
-                                        <ClassCardGrid data={data} />
-                                    </Link>
-                                    : <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
-                                        <ClassCardList data={data} />
-                                    </Link>
-                            })}
-                        </div>
-                        <AddButton />
-                    </div>
+            <Header topRight="userIcon" />
+            <div className={gridDisplay ? "container grid-display" : "container list-display"}>
+                <DisplaySettings
+                    setShowingOption={handleFilter}
+                    gridDisplay={gridDisplay}
+                    setToGrid={() => setGridDisplay(true)}
+                    setToList={() => setGridDisplay(false)}
+                />
+                <div className="cards-ctr">
+                    {allClasses.filter((cl) => {
+                        if (filter === "ALL CLASSES") {
+                            return cl
+                        } else if (filter === "FUTURE CLASSES") {
+                            return new Date(cl.date) > new Date()
+                        } else if (filter === "PAST CLASSES") {
+                            return new Date(cl.date) < new Date()
+                        }
+                    }).map((data, index) => {
+                        return gridDisplay
+                            ? <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
+                                <ClassCardGrid data={data} />
+                            </Link>
+                            : <Link to={"/detail/" + data._id} key={index} style={{ textDecoration: 'none' }}>
+                                <ClassCardList data={data} />
+                            </Link>
+                    })}
                 </div>
-            }
+                <AddButton />
+            </div>
         </div>
     );
 }

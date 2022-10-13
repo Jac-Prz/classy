@@ -1,11 +1,12 @@
 import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
-import { useContext, useState } from "react";
-import { UserContext } from "../../context/UserContext";
-import { json } from "react-router-dom";
+import { useState } from "react";
+import useAuth from "../../context/useAuthHook";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = (props) => {
-
+    //navigate
+    const navigate = useNavigate();
     // state
     const [errorField, setErrorField] = useState("")
     const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const SignInForm = (props) => {
     });
 
     // context
-    const { setUser } = useContext(UserContext);
+    const { setUser } = useAuth();
 
     //functions
     const handleFormData = (e) => {
@@ -49,7 +50,7 @@ const SignInForm = (props) => {
                 body: JSON.stringify(data)
             }
         );
-        if (response.ok){
+        if (response.ok) {
             const json = await response.json()
             console.log(json);
             const fullName = json.last_name ? json.first_name + " " + json.last_name : json.first_name;
@@ -64,14 +65,14 @@ const SignInForm = (props) => {
                 email: "",
                 password: ""
             })
+            navigate('/');
         } else {
             props.handleErrorMsg("Oops! That email and pasword combination is not valid.");
         }
-
     }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="input-container">
                 <Input
                     name="email"
@@ -92,8 +93,7 @@ const SignInForm = (props) => {
             </div>
             <AlternateLogin type="signUp" />
             <button
-                className="btn-lrg btn-green"
-                onClick={handleSubmit}>SIGN IN</button>
+                className="btn-lrg btn-green" >SIGN IN</button>
         </form>
     );
 }
