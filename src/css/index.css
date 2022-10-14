@@ -28,7 +28,7 @@ p {
 }
 
 .main-container {
-  min-height: calc(100vh - 3.6rem);
+  min-height: calc(100vh - 2.1rem);
   padding: .5rem 1.8rem 1.5rem;
 }
 
@@ -60,6 +60,13 @@ p {
 .sml-gry {
   color: #949EA8;
   font-size: 11.2px;
+}
+
+.loader{
+  height:calc(100vh - 10rem) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Inputs */
@@ -143,7 +150,6 @@ button {
   width: 100px;
   height: 32px;
 }
-
 
 /* add new class button */
 .add-btn-ctr {
