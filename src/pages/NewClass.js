@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import Header from "../components/header/Header";
 import NewClassForm from "../components/NewClassForm";
 import "../css/new-class.css"
@@ -6,6 +6,10 @@ import "../css/new-class.css"
 const NewClass = () => {
 
     const [errorMsg, setErrorMsg] = useState(null);
+
+    useEffect(()=>{
+        document.title='Classy - New Class'
+    }, [])
 
     return (
         <div className="main-container">

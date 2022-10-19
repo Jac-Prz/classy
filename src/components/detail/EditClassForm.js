@@ -57,6 +57,10 @@ const EditClassForm = (props) => {
         }
     }
 
+    useEffect(()=>{
+        document.title='Classy - Edit Class'
+    }, [])
+
     return (
         <div className="detail-ctr">
             <ClassDetail classId={props.data._id} bin={true} />

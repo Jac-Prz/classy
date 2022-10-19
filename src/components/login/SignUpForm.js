@@ -2,7 +2,7 @@ import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
 import axios from "../../api/axios"
 import useAuth from "../../context/useAuthHook";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -80,6 +80,10 @@ const SignUpForm = (props) => {
             }
         }
     }
+
+    useEffect(()=>{
+        document.title='Classy - Sign Up'
+    }, [])
 
     return (
         <form onSubmit={handleSubmit}>

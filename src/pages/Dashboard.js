@@ -5,7 +5,7 @@ import ClassCardGrid from "../components/dashboard/ClassCardGrid";
 import ClassCardList from "../components/dashboard/ClassCardList";
 import AddButton from "../components/dashboard/AddButton";
 import axios from "../api/axios"
-import { useEffect, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import { Link, useNavigate} from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
 
@@ -34,6 +34,10 @@ const Dashboard = () => {
 
     useEffect(() => {
         getClasses();
+    }, [])
+
+    useEffect(()=>{
+        document.title='Classy - Dashboard'
     }, [])
 
     return (
@@ -75,12 +79,11 @@ const Dashboard = () => {
                         : <div className="no-classes" >
                             <div>
                                 <h1 className="headline">Be a trailblazer!</h1>
-
                                 <Link to="/newclass" style={{ textDecoration: "none" }}><p className="sub-head underline">Add the first class</p></Link>
                                 <p className="sub-head">to kick off a new era of learning.</p>
                             </div>
                             <div>
-                                <img src={"graduate.png"} />
+                                <img src={"graduate.png"} alt="a graduate celebrating" />
                             </div>
                         </div>
                 }
@@ -88,6 +91,8 @@ const Dashboard = () => {
             <AddButton />
         </div>
     );
+
 }
+
 
 export default Dashboard;

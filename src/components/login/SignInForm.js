@@ -2,7 +2,7 @@ import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
 import useAuth from "../../context/useAuthHook";
 import axios from "../../api/axios"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignInForm = (props) => {    const { setUser } = useAuth();
@@ -61,6 +61,10 @@ const SignInForm = (props) => {    const { setUser } = useAuth();
             }
         }
     }
+
+    useEffect(()=>{
+        document.title='Classy - Sign In'
+    }, [])
 
     return (
         <form onSubmit={handleSubmit}>
