@@ -14,7 +14,7 @@ const NewClass = () => {
     return (
         <div className="main-container">
             <Header topRight="userIcon" backCross={true} />
-            <section className="new-class-ctr">
+            <main className="new-class-ctr">
                 <div>
                     <div>
                         <h2 className="headline">Create a new class.</h2>
@@ -24,7 +24,7 @@ const NewClass = () => {
                     </div>
                     <NewClassForm setError={(errmsg) => setErrorMsg(errmsg)} />
                 </div>
-            </section>
+            </main>
         </div>
     );
 }

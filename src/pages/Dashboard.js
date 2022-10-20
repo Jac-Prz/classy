@@ -43,6 +43,7 @@ const Dashboard = () => {
     return (
         <div className="main-container">
             <Header topRight="userIcon" />
+            <main>
             <div>
                 {!loaded ?
                     <div className="loader"> <FadeLoader color="#A9AEB4"/></div>
@@ -89,6 +90,7 @@ const Dashboard = () => {
                 }
             </div>
             <AddButton />
+            </main>
         </div>
     );
 

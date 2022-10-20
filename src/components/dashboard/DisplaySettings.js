@@ -25,49 +25,58 @@ const DisplaySettings = (props) => {
     }
 
     return (
-        <div className="display-settings">
+        <section className="display-settings">
             <div className={hideDropdown ? "gry-bld showing-options hidden" : "gry-bld showing-options expanded"}>
                 <p className="gry-bld ">SHOW: </p>
                 <ul>
                     <li
+                        tabindex="0"
                         className="all"
-                        style= {(selectedOption === "ALL CLASSES")  ? selectedStyle : defaultStyle}
+                        style={(selectedOption === "ALL CLASSES") ? selectedStyle : defaultStyle}
                         onClick={changeDisplayedClasses}
-                        >
+                    >
                         ALL CLASSES
                     </li>
-                                        <li
-                    className="future"
-                        style= {(selectedOption === "FUTURE CLASSES")  ? selectedStyle : defaultStyle}
+                    <li
+                        tabindex="0"
+                        className="future"
+                        style={(selectedOption === "FUTURE CLASSES") ? selectedStyle : defaultStyle}
                         onClick={changeDisplayedClasses}
-                        >
+                    >
                         FUTURE CLASSES
                     </li>
                     <li
-                    className="past"
-                        style= {(selectedOption === "PAST CLASSES")  ? selectedStyle : defaultStyle}
+
+                        tabindex="0"
+                        className="past"
+                        style={(selectedOption === "PAST CLASSES") ? selectedStyle : defaultStyle}
                         onClick={changeDisplayedClasses}
-                        >
+                    >
                         PAST CLASSES
                     </li>
                 </ul>
-                <p className="gry-bld" onClick={() => setHideDropdown(!hideDropdown)}><FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
+                <p
+                    tabindex="0"
+                    className="gry-bld"
+                    onClick={() => setHideDropdown(!hideDropdown)}><FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
             </div>
             <div className='layout-icon'>
                 <div
+                    tabindex="0"
                     className={props.gridDisplay ? "selected-layout" : null}
                     onClick={props.setToGrid}
                 >
                     <FontAwesomeIcon icon={faGrip} />
                 </div>
                 <div
+                    tabindex="0"
                     className={props.gridDisplay ? null : "selected-layout"}
                     onClick={props.setToList}
                 >
                     <FontAwesomeIcon icon={faGripLines} />
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

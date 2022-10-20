@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-.login-page>div {
+.login-page>main {
     /* header:h1.5, main-container: h1.8 w1.5 */
     min-height: calc(100vh - 2rem - 4rem);
     display: flex;
@@ -47,7 +47,7 @@
         background-size: contain;
     }
 
-    .login-page>div {
+    .login-page>main {
         /* header:h1.5, main-container: h1.8 w1.5 */
         height: calc(100vh - 2rem - 4rem);
         justify-content: unset;

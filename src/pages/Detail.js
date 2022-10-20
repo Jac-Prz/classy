@@ -47,12 +47,14 @@ const Detail = (props) => {
     return (
         <div className="main-container">
             <Header topRight="userIcon" back={true} />
+            <main>
             {!loaded
                 ? <div className="loader"> <FadeLoader color="#A9AEB4"/></div>
                 : (loaded && !props.edit)
                     ? <DisplayView detail={true} data={classData} reset={getClass} />
                     : <EditClassForm data={classData} reset={getClass} />
             }
+            </main>
         </div>
     );
 }

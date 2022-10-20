@@ -20,7 +20,7 @@ const LogIn = (props) => {
     return (
         <div className="main-container login-page">
             <Header topRight={props.type} />
-            <div>
+            <main>
                 <section className="quote-ctr">
                     <div >
                         <p className="quote">“Intelligence is like a four-wheel drive. It allows you to get stuck in more remote places..”</p>
@@ -46,7 +46,7 @@ const LogIn = (props) => {
                         }
                     </div>
                 </section>
-            </div>
+            </main>
         </div>
     );
 }

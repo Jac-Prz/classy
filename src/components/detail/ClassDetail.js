@@ -29,6 +29,7 @@ const ClassDetail = (props) => {
                 DETAIL CLASS: #{props.classId}
             </p>
             {props.bin ? <p
+            tabindex="0"
                 className="delete"
                 onClick={deleteClass}
             ><FontAwesomeIcon icon={faTrash} /> <span >DELETE CLASS</span> </p> : null}

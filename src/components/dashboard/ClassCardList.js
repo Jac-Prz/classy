@@ -12,7 +12,7 @@ const ClassCardList = (props) => {
     }
 
     return (
-        <div className="card card-list-view">
+        <section className="card card-list-view">
             <p className="card-date">{props.data.date}</p>
             <h2 className="headline card-heading">{props.data.classname}</h2>
             <p className="author">{props.data.created_by_name}</p>
@@ -21,7 +21,7 @@ const ClassCardList = (props) => {
             <div className="card-btn">
             <CardButton data={props.data} reset={() => props.reset()}/>
             </div>
-        </div>
+        </section>
     );
 }
 
