@@ -3,7 +3,7 @@ import TickButton from "./TickButton";
 import Attendees from "./Attendees"
 import ClassDetail from "./ClassDetail";
 import axios from "../../api/axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const EditClassForm = (props) => {
@@ -17,6 +17,7 @@ const EditClassForm = (props) => {
         no_of_places: 0,
     });
     const [errorField, setErrorField] = useState(null);
+
 
     useEffect(() => {
         setFormData(props.data)
@@ -74,6 +75,7 @@ const EditClassForm = (props) => {
                             onChange={handleFormData}
                             value={formData.classname}
                             error={(errorField === "classname") ? true : false}
+                            initialRef={true}
                         />
                         <Input
                             name="description"

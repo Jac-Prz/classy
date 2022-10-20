@@ -80,8 +80,9 @@ const NewClassForm = (props) => {
                     placeholder="Title"
                     onChange={handleFormData}
                     value={formData.title}
-                    error={(errorField === "title") ? true : false} />
-
+                    error={(errorField === "title") ? true : false}
+                    initialRef={true}
+                />
                 <Input
                     name="description"
                     type="text"

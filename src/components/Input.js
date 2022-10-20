@@ -1,4 +1,20 @@
+import { useEffect, useRef } from "react";
+
 const Input = (props) => {
+
+    const inputEl = useRef(null);
+
+useEffect(()=>{
+if (props.initialRef){
+    inputEl.current.focus();
+}
+}, [])
+
+useEffect(()=>{
+    if (props.error){
+        inputEl.current.focus();
+    }
+    }, [props.error])
 
     return (
         <div>
@@ -16,6 +32,7 @@ const Input = (props) => {
                 style={{ borderBottom: props.error ? "solid 1px #FF0000" : "solid 1px #C9CED3" }}
                 className={props.cassName}
                 autoComplete="off"
+                ref={inputEl} 
             />
         </div>
     );

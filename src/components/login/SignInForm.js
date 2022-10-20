@@ -2,16 +2,21 @@ import AlternateLogin from "./AlternateLogin";
 import Input from "../Input";
 import useAuth from "../../context/useAuthHook";
 import axios from "../../api/axios"
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignInForm = (props) => {    const { setUser } = useAuth();
+const SignInForm = (props) => {
+    const { setUser } = useAuth();
     const navigate = useNavigate();
     const [errorField, setErrorField] = useState("")
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
+
+    useEffect(() => {
+        document.title = 'Classy - Sign In';
+    }, [])
 
     const handleFormData = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -62,10 +67,6 @@ const SignInForm = (props) => {    const { setUser } = useAuth();
         }
     }
 
-    useEffect(()=>{
-        document.title='Classy - Sign In'
-    }, [])
-
     return (
         <form onSubmit={handleSubmit}>
             <div className="input-container">
@@ -76,6 +77,7 @@ const SignInForm = (props) => {    const { setUser } = useAuth();
                     onChange={handleFormData}
                     value={formData.email}
                     error={(errorField === "email") ? true : false}
+                    initialRef={true}
                 />
                 <Input
                     name="password"

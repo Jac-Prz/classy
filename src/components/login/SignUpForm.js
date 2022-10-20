@@ -95,6 +95,7 @@ const SignUpForm = (props) => {
                     onChange={handleFormData}
                     value={formData.firstName}
                     error={(errorField === "firstName") ? true : false}
+                    initialRef={true}
                 />
                 <Input
                     name="lastName"
